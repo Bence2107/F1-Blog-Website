@@ -1,0 +1,12 @@
+<footer>
+  <p class="footer-text">🏎️ Hivatalos Formula 1 Elérhetőségek</p>
+
+  <div class="link-container">
+    <a *ngFor="let social of socialLinks" [href]="social.url" target="_blank" [attr.aria-label]="social.label" class="link">
+      <i [ngClass]="social.icon"></i>
+      {{social.label}}
+    </a>
+  </div>
+
+  <p class="footer-copyRight">© {{ currentYear }} Formula 1. Minden jog fenntartva.</p>
+</footer>
