@@ -2,7 +2,7 @@ import {Component, EventEmitter, Output } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { NgIf } from '@angular/common';
 import {MatButton, MatIconButton} from '@angular/material/button';
-import {RouterLink} from '@angular/router';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
 
 
@@ -14,6 +14,7 @@ import {MatIcon} from '@angular/material/icon';
     RouterLink,
     MatIconButton,
     MatIcon,
+    RouterLinkActive,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
