@@ -1,11 +1,29 @@
 <meta charset="UTF-8">
-<header>
-  <img ngSrc="/img/logo.png" alt="Drs Zone" height="113" width="300" class="logo">
-  <nav>
-    <ul class="nav_links">
-      <li><a routerLink="/home">Főoldal</a></li>
-      <li><a routerLink="/news">Hírek</a></li>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" class="sidebar">
+    <ul>
+      <li><a routerLink="/home" (click)="sidenav.close()">Főoldal</a></li>
+      <li><a routerLink="/news" (click)="sidenav.close()">Hírek</a></li>
+      <li><a routerLink="/login" (click)="sidenav.close()">Bejelentkezés</a></li>
     </ul>
-  </nav>
-  <button routerLink="/login" mat-flat-button>Bejelentkezés</button>
-</header>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <header>
+      <button
+        mat-icon-button
+        class="menu-button"
+        *ngIf="isScreenSmall"
+        (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <img src="/img/logo.png" alt="Drs Zone" class="logo">
+      <nav *ngIf="!isScreenSmall">
+        <ul class="nav_links">
+          <li><a routerLink="/home">Főoldal</a></li>
+          <li><a routerLink="/news">Hírek</a></li>
+        </ul>
+      </nav>
+      <button routerLink="/login" mat-flat-button class="login-button">Bejelentkezés</button>
+    </header>
+  </mat-sidenav-content>
+</mat-sidenav-container>
