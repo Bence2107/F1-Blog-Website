@@ -17,6 +17,8 @@ html {
 }
 
 
-html, body { height: 100%; }
+html, body {
+  min-width: 880px;
+  height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
