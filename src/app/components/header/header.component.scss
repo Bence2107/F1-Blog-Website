@@ -70,7 +70,7 @@ header{
   left: 0;
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 0.4s ease-out;
+  transition: transform 0.15s ease-out;
 }
 
 .nav_links li a::before {
@@ -91,36 +91,9 @@ header {
   ));
 }
 
-.menu-button {
-  display: none;
-
-  @media (max-width: 870px){
-    display: flex;
-    width: 100px;
-    height: 100px;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-.sidebar {
-  padding: 16px;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar ul li {
-  margin: 16px 0;
-}
-
-.sidebar ul li a {
-  text-decoration: none;
-  font-family: 'Kanit', cursive;
-  font-size: 24px;
-  color: black;
+.activeLink{
+  color: #f8274f !important;
+  font-weight: bold;
 }
 
 @media (max-width: 870px) {

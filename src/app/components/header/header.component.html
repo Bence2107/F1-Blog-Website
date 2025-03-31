@@ -1,29 +1,18 @@
 <meta charset="UTF-8">
-<mat-sidenav-container>
-  <mat-sidenav #sidenav mode="over" class="sidebar">
-    <ul>
-      <li><a routerLink="/home" (click)="sidenav.close()">Főoldal</a></li>
-      <li><a routerLink="/news" (click)="sidenav.close()">Hírek</a></li>
-      <li><a routerLink="/login" (click)="sidenav.close()">Bejelentkezés</a></li>
+<header>
+  <button
+    mat-icon-button
+    class="menu-button"
+    *ngIf="isScreenSmall"
+    (click)="toggleSidenav.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img src="/img/logo.png" alt="Drs Zone" class="logo">
+  <nav *ngIf="!isScreenSmall">
+    <ul class="nav_links">
+      <li><a routerLink="/home" routerLinkActive="activeLink">Főoldal</a></li>
+      <li><a routerLink="/news" routerLinkActive="activeLink">Hírek</a></li>
     </ul>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <header>
-      <button
-        mat-icon-button
-        class="menu-button"
-        *ngIf="isScreenSmall"
-        (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <img src="/img/logo.png" alt="Drs Zone" class="logo">
-      <nav *ngIf="!isScreenSmall">
-        <ul class="nav_links">
-          <li><a routerLink="/home">Főoldal</a></li>
-          <li><a routerLink="/news">Hírek</a></li>
-        </ul>
-      </nav>
-      <button routerLink="/login" mat-flat-button class="login-button">Bejelentkezés</button>
-    </header>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </nav>
+  <button routerLink="/login" mat-flat-button class="login-button">Bejelentkezés</button>
+</header>
