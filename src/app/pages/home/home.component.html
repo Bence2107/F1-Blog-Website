@@ -1,1 +1,19 @@
-<p>Example text</p>
+<main>
+  <div class="content-container">
+    <div class="news">
+      <h1>Kiemelt híreink:</h1>
+      <div class="primary_news-container">
+        <div class="new-item" *ngFor="let new_item of news_list">
+          <img [src]="'/img/news-images/' + new_item.id + '.jpg'" [alt]="new_item.label">
+          <div class="text-content">
+            <h2 class="news-label">{{new_item.label}}</h2>
+            <p class="news-desc">{{new_item.desc}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-us">
+    <p>Welcome</p>
+  </div>
+</main>
