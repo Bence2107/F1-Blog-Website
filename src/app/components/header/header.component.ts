@@ -20,13 +20,31 @@ import {MatIcon} from '@angular/material/icon';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  isDarkMode: boolean = true;
+
   @Output() toggleSidenav = new EventEmitter<void>();
   isScreenSmall: boolean = false;
 
   constructor(private breakpointObserver: BreakpointObserver) {
-    this.breakpointObserver.observe(['(max-width: 870px)']).subscribe(result => {
+    this.breakpointObserver.observe(['(max-width: 990px)']).subscribe(result => {
       this.isScreenSmall = result.matches;
     });
   }
 
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    const newTheme = this.isDarkMode ? 'dark' : 'light';
+    this.setTheme(newTheme);
+  }
+
+  setTheme(theme: string) {
+    if (theme === 'dark') {
+      document.body.classList.add('dark-mode');
+      document.body.classList.remove('light-mode');
+    } else {
+      document.body.classList.add('light-mode');
+      document.body.classList.remove('dark-mode');
+    }
+    localStorage.setItem('theme', theme);
+  }
 }

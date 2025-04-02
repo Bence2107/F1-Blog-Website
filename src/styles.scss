@@ -1,7 +1,33 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
+:root {
+  --primary-background: #21212e;
+  --primary-text: #bbb;
+  --secondary-background: #15161d;
+  --secondary-text: #c3c3c3;
+
+
+  --dark-primary-background: #15161d;
+  --dark-primary-text: #bbb;
+  --dark-secondary-background: #21212e;
+  --dark-secondary-text: #bbb;
+}
+
+.light-mode {
+  --primary-background: #f1f1f1;
+  --primary-text: #15161d;
+  --secondary-background: #d1caca;
+  --secondary-text: #555;
+}
+
+.dark-mode {
+  background-color: var(--dark-primary-background);
+  color: var(--dark-primary-text);
+}
+
+.dark-mode .news-container {
+  background-color: var(--dark-secondary-background);
+  color: var(--dark-secondary-text);
+}
 
 html {
   @include mat.theme((
@@ -18,7 +44,11 @@ html {
 
 
 html, body {
+
   min-width: 880px;
   height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
