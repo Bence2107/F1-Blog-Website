@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {PrimaryNewsListComponent} from './components/primary-news-list/primary-news-list.component';
 
 @Component({
   selector: 'app-home',
   imports: [
     CommonModule,
+    PrimaryNewsListComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  news_list = [
-    { id: "1", label: 'Fehérbe borul a Red Bull', desc: "Japán versenyző, japán festés" },
-    { id: "2", label: 'Áttörést találhatott a Ferrari', desc: "20 különböző szimulátor tapasztalat után visszatérhetnek a Pirosak?" },
-    { id: "3", label: 'Lawsont sokként érte a Red Bull döntése', desc: " Tsunoda adott esetben legyőzheti Verstappent" },
-  ];
+
 }

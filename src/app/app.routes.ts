@@ -4,6 +4,7 @@ import {NewsComponent} from './pages/news/news.component';
 import {SignupComponent} from './pages/auth/signup/signup.component';
 import {LoginComponent} from './pages/auth/login/login.component';
 import {ProfileComponent} from './pages/profile/profile.component';
+import {ArticleComponent} from './pages/article/article.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,6 +18,8 @@ export const routes: Routes = [
   { path: "signup", component: SignupComponent },
 
   { path: "profile", component: ProfileComponent },
+
+  { path: "article/:id", component: ArticleComponent },
 
 
 ];
