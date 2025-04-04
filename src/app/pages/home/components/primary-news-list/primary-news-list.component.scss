@@ -58,13 +58,21 @@
 }
 
 @media ( max-width: 1024px) {
-  .new-item {
-    width: calc(33.33% - 20px);
+  .primary_news-container {
+    flex-wrap: wrap;
   }
-}
-
-@media (max-width: 768px) {
   .new-item {
     width: 100%;
   }
+
+}
+
+@media (max-width: 768px) {
+  .primary_news-container {
+    flex-wrap: wrap;
+  }
+  .new-item {
+    width: 100%;
+  }
+
 }

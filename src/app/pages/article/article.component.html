@@ -1,1 +1,11 @@
-<p>article works!</p>
+<div *ngIf="article">
+  <img [src]="'/img/news-images/primary/' + article.id + '.jpg'" [alt]="article.label ">
+  <h1>{{ article.label }}</h1>
+  <p>{{ article.first_section }}</p>
+  <img [src]="'/img/news-images/secondary/' + article.id + '.jpg'" [alt]="article.label ">
+  <p>{{ article.second_section }}</p>
+  <button routerLink="/news">Vissza híreinkhez</button>
+</div>
+<div *ngIf="!article">
+  <p>Article not found.</p>
+</div>

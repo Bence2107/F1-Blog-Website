@@ -19,7 +19,7 @@ export const routes: Routes = [
 
   { path: "profile", component: ProfileComponent },
 
-  { path: "article/:id", component: ArticleComponent },
+  { path: "article/:url", component: ArticleComponent },
 
 
 ];

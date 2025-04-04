@@ -11,10 +11,9 @@
       <li><a routerLink="/login" routerLinkActive="activeLink" (click)="sidenav.close()">Bejelentkezés</a></li>
     </ul>
   </mat-sidenav>
-
   <mat-sidenav-content>
-    <app-header (toggleSidenav)="sidenav.toggle()"></app-header>
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>  <!-- ✅ Footer is now global! -->
+    <app-header (toggleSidenav)="sidenav.toggle()"/>
+    <router-outlet/>
+    <app-footer/>  <!-- ✅ Footer is now global! -->
   </mat-sidenav-content>
 </mat-sidenav-container>

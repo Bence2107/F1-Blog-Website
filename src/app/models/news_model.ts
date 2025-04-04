@@ -3,8 +3,6 @@ export interface NewsModel {
   url: string;
   label: string;
   description: string;
-  first_section?: string;
-  second_img?: string;
-  second_section?: string;
-
+  first_section: string;
+  second_section: string;
 }
