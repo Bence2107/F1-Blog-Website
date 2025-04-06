@@ -1,0 +1,9 @@
+<div class="news-container">
+  <div class="new-item" *ngFor="let new_item of news_list" [routerLink]="['/article', new_item.url]">
+    <img [src]="'/img/news-images/' + new_item.id + '/primary.jpg'" [alt]="new_item.label ">
+    <div class="text-content">
+      <h2 class="news-label">{{new_item.label}}</h2>
+      <p class="news-desc">{{new_item.summary}}</p>
+    </div>
+  </div>
+</div>
