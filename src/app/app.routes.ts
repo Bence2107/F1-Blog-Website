@@ -5,6 +5,7 @@ import {SignupComponent} from './pages/auth/signup/signup.component';
 import {LoginComponent} from './pages/auth/login/login.component';
 import {ProfileComponent} from './pages/profile/profile.component';
 import {ArticleComponent} from './pages/article/article.component';
+import {ReviewsComponent} from './pages/reviews/reviews.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -13,6 +14,8 @@ export const routes: Routes = [
 
   { path: "news", component: NewsComponent },
 
+  { path: "reviews", component: ReviewsComponent },
+
   { path: "login", component: LoginComponent },
 
   { path: "signup", component: SignupComponent },
@@ -20,6 +23,5 @@ export const routes: Routes = [
   { path: "profile", component: ProfileComponent },
 
   { path: "article/:url", component: ArticleComponent },
-
 
 ];

@@ -1,19 +1,18 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="over" class="sidebar">
-
     <div class="sidenav-header">
       <p>Menü</p>
     </div>
-
     <ul>
       <li><a routerLink="/home" routerLinkActive="activeLink" (click)="sidenav.close()">Főoldal</a></li>
       <li><a routerLink="/news" routerLinkActive="activeLink" (click)="sidenav.close()">Hírek</a></li>
+      <li><a routerLink="/reviews" routerLinkActive="activeLink" (click)="sidenav.close()">Összefoglalók</a></li>
       <li><a routerLink="/login" routerLinkActive="activeLink" (click)="sidenav.close()">Bejelentkezés</a></li>
     </ul>
   </mat-sidenav>
   <mat-sidenav-content>
     <app-header (toggleSidenav)="sidenav.toggle()"/>
     <router-outlet/>
-    <app-footer/>  <!-- ✅ Footer is now global! -->
+    <app-footer/>
   </mat-sidenav-content>
 </mat-sidenav-container>
