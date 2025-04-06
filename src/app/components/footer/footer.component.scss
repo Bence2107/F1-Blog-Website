@@ -44,6 +44,7 @@ footer {
   position: relative;
   color: #15161d;
   display: inline-block;
+  text-decoration: none;
 }
 
 .link:hover{
@@ -72,4 +73,39 @@ footer {
 .link:hover::after,
 .link:hover::before {
   transform: scaleX(1);
+}
+
+@media (max-width: 768px) {
+  footer {
+    display: flex;
+  }
+
+  .link-container {
+    flex-direction: column;
+    padding: 15px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .link {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 370px) {
+  footer {
+    display: flex;
+    font-size: 10px;
+  }
+
+  .link-container {
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .link {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
 }
