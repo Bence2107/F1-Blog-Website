@@ -1,11 +1,44 @@
-<div *ngIf="article">
-  <img [src]="'/img/news-images/primary/' + article.id + '.jpg'" [alt]="article.label ">
-  <h1>{{ article.label }}</h1>
-  <p>{{ article.first_section }}</p>
-  <img [src]="'/img/news-images/secondary/' + article.id + '.jpg'" [alt]="article.label ">
-  <p>{{ article.second_section }}</p>
-  <button routerLink="/news">Vissza híreinkhez</button>
+<div class="article-contatiner" *ngIf="article">
+  <div *ngIf="!article.isReview">
+    <div class="first-section">
+      <button routerLink="/news" mat-flat-button class="back-button">Vissza</button>
+      <img [src]="'/img/news-images/' + article.id + '/primary.jpg'" [alt]="article.title " class="primary">
+      <h1>{{ article.title }}</h1>
+      <h2>{{ article.summary }}</h2>
+    </div>
+
+    <p [innerHTML]="article.first_section"></p>
+
+    <div class="second-section">
+      <img [src]="'/img/news-images/' + article.id + '/secondary.jpg'" [alt]="article.label " class="secondary">
+    </div>
+
+    <p [innerHTML]="article.last_section"></p>
+
+    <div>
+      <button *ngIf="article.reviewUrl" mat-flat-button class="back-button" [routerLink]="['/article', article.reviewUrl]">Összefoglaló</button>
+
+    </div>
+
+  </div>
+
+  <div *ngIf="article.isReview">
+    <button routerLink="/news" class="back-button">Vissza</button>
+
+    <img [src]="'/img/reviews-images/' + article.id + '/primary.jpg'" [alt]="article.label ">
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.first_section }}</p>
+    <img [src]="'/img/reviews-images/' + article.id + '/secondary.jpg'" [alt]="article.label ">
+    <p>{{ article.second_section }}</p>
+    <img [src]="'/img/reviews-images/' + article.id + '/third.jpg'" [alt]="article.label ">
+    <p>{{ article.third_section }}</p>
+    <p>{{ article.fourth_section }}</p>
+    <img [src]="'/img/reviews-images/' + article.id + '/fourth.jpg'" [alt]="article.label ">
+    <p>{{ article.last_section }}</p>
+
+    <button routerLink="/news">Híreink</button>
+  </div>
 </div>
-<div *ngIf="!article">
+<div class="article-contatiner" *ngIf="!article">
   <p>Article not found.</p>
 </div>

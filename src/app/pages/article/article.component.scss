@@ -1,0 +1,115 @@
+@use '@angular/material' as mat;
+
+*{
+  box-sizing: border-box;
+  background-color: var(--primary-background);
+  color: var(--primary-text);
+  margin: 0;
+
+}
+
+.article-contatiner{
+  display: flex;
+  background-color: var(--secondary-background);
+  justify-content: center;
+  align-items: center;
+
+  @include mat.button-overrides((
+    filled-container-color: #f8274f,
+    filled-label-text-color: white,
+    outlined-ripple-color: rgba(165, 0, 0, 0.2),
+  ));
+}
+
+.back-button{
+  width: 10%;
+  font-size: 16px;
+}
+
+.article-contatiner h1, h2, h3, h4, h5, h6, p{
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.article-contatiner p{
+  text-align: justify;
+}
+
+.first-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px 15% 10px 15%
+}
+
+
+.first-section h1{
+  font-size: 2.5em;
+  padding: 20px 0;
+  text-transform: uppercase;
+}
+
+.first-section h2{
+  font-size: 1.6em;
+}
+
+p{
+  font-size: 1.2em;
+  padding: 10px 15%;
+}
+
+.primary {
+  margin: auto;
+  max-width: 70%;
+  border-radius: 20px;
+}
+
+.second-section{
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+
+}
+
+.secondary {
+  margin: auto;
+  max-width: 40%;
+  border-radius: 20px;
+}
+
+
+@media  (max-width: 1024px) {
+
+}
+
+@media (max-width: 990px) {
+  .back-button{
+    margin: 20px auto;
+    font-size: 24px;
+    width: 30%;
+  }
+
+  .primary {
+    max-width: 100%;
+  }
+
+  .first-section h1{
+    font-size: 2em;
+    width: 100%;
+  }
+
+  .first-section h2{
+    font-size: 1.9em;
+    width: 100%;
+  }
+
+  p{
+    font-size: 1.5em;
+    width: 100%;
+  }
+  .secondary {
+    max-width: 70%;
+  }
+}
