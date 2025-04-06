@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { NgIf } from '@angular/common';
 import {MatButton, MatIconButton} from '@angular/material/button';
@@ -19,18 +19,26 @@ import {MatIcon} from '@angular/material/icon';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+
+
   isDarkMode: boolean = true;
 
   @Output() toggleSidenav = new EventEmitter<void>();
   isScreenSmall: boolean = false;
+
+
+  ngOnInit(): void {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    this.isDarkMode = savedTheme === 'dark';
+    this.setTheme(savedTheme);
+  }
 
   constructor(private breakpointObserver: BreakpointObserver) {
     this.breakpointObserver.observe(['(max-width: 990px)']).subscribe(result => {
       this.isScreenSmall = result.matches;
     });
   }
-
   toggleTheme() {
     this.isDarkMode = !this.isDarkMode;
     const newTheme = this.isDarkMode ? 'dark' : 'light';
