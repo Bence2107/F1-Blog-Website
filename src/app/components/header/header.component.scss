@@ -108,12 +108,10 @@ header {
 }
 
 @media (min-width: 990px) and (max-width: 1350px) {
-
   .logo{
     display: flex;
     width: 40%;
   }
-
 
   .login-button{
     display: none;
@@ -121,11 +119,11 @@ header {
 
   .account-icon{
     display: flex;
-    margin-left: 2%;
+    margin-right: 2%;
   }
 
   .nav_links {
-    gap: 5px;
+    gap: 1px;
   }
 
   .nav_links li a {
