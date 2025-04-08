@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+@use "../auth_styles" as auth_styles;
+
+main{
+  @include auth_styles.form_main;
+}
+
+.signup-form-container{
+  @include auth_styles.form_container;
+}
+
+.auth-signup {
+  @include auth_styles.auth-form;
+}
+
+.auth-signup mat-form-field {
+  display: flex;
+}
+
+.signup-form-button{
+  @include auth_styles.form-button;
+}
+
+.back-button{
+  @include auth_styles.back_button;
+}
+.back-button:hover{
+  @include auth_styles.back-button_hover;
+}

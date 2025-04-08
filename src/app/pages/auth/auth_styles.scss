@@ -1,0 +1,66 @@
+@use '@angular/material' as mat;
+
+@mixin form_main{
+  background-color: var(--primary-background);
+  padding-block: 125px;
+}
+
+@mixin form_container{
+  background-color: var(--secondary-background);
+  max-width: 50%;
+  padding: 70px;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+@mixin auth-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+  padding: 40px;
+  background-color: var(--primary-background);
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+
+  h2{
+    text-align: center;
+    color: var(--primary-text)
+  }
+
+
+  p{
+    font-size: 18px;
+    display: flex;
+    margin: auto;
+    padding-top: 30px;
+    color: var(--primary-text);
+    justify-content: center;
+    align-items: center;
+
+    a{
+      margin-left: 3px;
+      text-decoration: none;
+      color: #ed2d4d;
+    }
+    a:hover{
+      color: #c62140;
+
+    }
+  }
+}
+
+@mixin form-button{
+  display: flex;
+  margin: auto;
+}
+
+@mixin back-button{
+  display: flex;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+@mixin back-button_hover{
+  color: #ed2449;
+}

@@ -11,6 +11,23 @@
   --dark-primary-text: #bbb;
   --dark-secondary-background: #21212e;
   --dark-secondary-text: #bbb;
+
+  --gray-text: #c3c3c3;
+  --red-text: #ed2449;
+
+
+  @include mat.button-overrides((
+    filled-container-color: #f8274f,
+    filled-label-text-color: white,
+    outlined-ripple-color: rgba(165, 0, 0, 0.2),
+  ));
+
+  @include mat.form-field-overrides((
+    filled-container-color: var(--secondary-background),
+    filled-label-text-color: var(--gray-text),
+    filled-focus-label-text-color: var(--red-text),
+    filled-hover-label-text-color: var(--gray-text),
+  ));
 }
 
 .light-mode {

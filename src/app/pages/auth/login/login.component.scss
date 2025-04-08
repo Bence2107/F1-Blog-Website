@@ -1,0 +1,22 @@
+@use '@angular/material' as mat;
+@use "../auth_styles" as auth_styles;
+
+main{
+  @include auth_styles.form_main;
+}
+
+.login-form-container{
+  @include auth_styles.form_container;
+}
+
+.auth-login {
+  @include auth_styles.auth-form;
+}
+
+.auth-login mat-form-field {
+  display: flex;
+}
+
+.login-form-button{
+  @include auth_styles.form-button;
+}
