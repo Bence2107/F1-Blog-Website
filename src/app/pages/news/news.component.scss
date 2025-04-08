@@ -11,7 +11,7 @@
   box-sizing: border-box;
   background-color: var(--primary-background);
   margin: 0;
-  padding: 30px 2%
+  padding: 5px 2%
 }
 
 h1{
@@ -45,7 +45,7 @@ app-news-list{
   display: flex;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 990px) {
   .news{
     width: 100%;
   }
@@ -57,5 +57,12 @@ app-news-list{
 
   app-news-list{
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  h1{
+    font-size: 1.3rem;
+    text-align: center;
   }
 }

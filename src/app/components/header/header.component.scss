@@ -26,20 +26,18 @@ header{
 }
 
 .login-button{
+  cursor: pointer;
   display: inline-flex;
+}
 
-  @media (max-width: 990px) {
-    display: none;
-  }
+.account-icon{
+  display: none;
+  color: black;
 }
 
 .nav_links {
   display: flex;
   gap: 16px;
-
-  @media (max-width: 990px) {
-    display: none;
-  }
 }
 .nav_links li {
   display: inline-block;
@@ -90,6 +88,7 @@ header {
     filled-label-text-color: white,
     outlined-ripple-color: rgba(165, 0, 0, 0.2),
   ));
+
 }
 
 .activeLink{
@@ -97,9 +96,49 @@ header {
   font-weight: bold;
 }
 
+.dark-light-switch-button {
+  cursor: pointer;
+  width: 3%;
+  height: 3%;
+  transition: transform 0.3s ease;
+}
+
+.dark-light-switch-button:active {
+  transform: scale(1.2);
+}
+
+@media (min-width: 990px) and (max-width: 1350px) {
+
+  .logo{
+    display: flex;
+    width: 40%;
+  }
+
+
+  .login-button{
+    display: none;
+  }
+
+  .account-icon{
+    display: flex;
+    margin-left: 2%;
+  }
+
+  .nav_links {
+    gap: 5px;
+  }
+
+  .nav_links li a {
+    padding: 20px;
+  }
+}
+
 @media (max-width: 990px) {
   header {
     padding: 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
   }
 
   .nav_links {
@@ -116,16 +155,16 @@ header {
 
   .dark-light-switch-button{
     width: 6%;
+    height: 6%;
+  }
+  .login-button{
+    display: none;
   }
 }
 
-.dark-light-switch-button {
-  cursor: pointer;
-  width: 3%;
-  height: 3%;
-  transition: transform 0.3s ease;
-}
-
-.dark-light-switch-button:active {
-  transform: scale(1.2);
+@media (max-width: 480px) {
+  .dark-light-switch-button{
+    width: 8%;
+    height: 8%;
+  }
 }

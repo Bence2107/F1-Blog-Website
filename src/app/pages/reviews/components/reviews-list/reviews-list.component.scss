@@ -1,9 +1,8 @@
 .reviews-container {
-  width: 100%;
   display: flex;
   margin: auto;
   padding: 50px 2%;
-  max-width: 70%;
+  width: 60%;
   gap: 30px;
   flex-wrap: wrap;
   border-radius: 30px 12px 30px 12px;
@@ -13,11 +12,8 @@
 .new-item {
   cursor: pointer;
   display: flex;
-  max-width: 100%;
-  justify-content: center;
   border-radius: 8px;
   padding: 20px;
-  overflow: hidden;
   flex-direction: column;
   background-color: var(--primary-background);
   gap: 20px;
@@ -54,4 +50,37 @@
   font-size: 1.6em;
   color: var(--news-secondary-text);
   margin: 0;
+}
+
+@media (max-width: 990px) {
+  .reviews-container {
+    padding: 10px 2%;
+    width: 100%;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .new-item {
+    display: flex;
+    margin: auto;
+    width: 80%;
+    border-radius: 12px;
+    gap: 10px;
+  }
+
+  .new-item img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 0 auto;
+  }
+
+  .news-label {
+    font-size: 1.3em;
+  }
+
+  .news-desc {
+    font-size: 1em;
+    color: var(--secondary-text);
+  }
 }

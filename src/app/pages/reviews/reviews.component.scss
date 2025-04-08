@@ -11,7 +11,7 @@
   box-sizing: border-box;
   background-color: var(--primary-background);
   margin: 0;
-  padding: 30px 2%
+  padding: 5px 2%
 }
 
 h1{
@@ -44,3 +44,19 @@ main{
 app-reviews-list{
   display: flex;
 }
+
+@media (max-width: 990px) {
+  .news{
+    width: 90%;
+  }
+
+  h1{
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  app-news-list{
+    width: 100%;
+  }
+}
+

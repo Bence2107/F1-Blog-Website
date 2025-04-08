@@ -60,6 +60,18 @@ export const review_article_list: ArticleModel[] = [
     last_section: "Nyert a Red Bull, McLaren továbbra is ",
     date: "2025.04.02.",
     isReview: true
-
+  },
+  {
+    id: 1,
+    url: "2025-japan-nagydij-osszefoglalo",
+    title: "A felkelő nap országában sokan visszaaludtak - 2025. Japán Nagydíj",
+    summary: "Japán versenyző, japán festés",
+    first_section: "Nyert a Red Bull",
+    second_section: "Szabadedzést nem láttam",
+    third_section: "Időmérőre a Red Bull (Verstappen) megtalálta a jobb beállításokat",
+    fourth_section: "Vasárnapi felkelés nem tartott sok izgalmat",
+    last_section: "Nyert a Red Bull, McLaren továbbra is ",
+    date: "2025.04.02.",
+    isReview: true
   },
 ]
