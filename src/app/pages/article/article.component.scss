@@ -1,11 +1,24 @@
 @use '@angular/material' as mat;
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 *{
   box-sizing: border-box;
   background-color: var(--primary-background);
   color: var(--primary-text);
   margin: 0;
 
+}
+
+main{
+  animation: fade-in 0.7s
 }
 
 .article-contatiner{
@@ -21,10 +34,6 @@
   ));
 }
 
-.back-button{
-  width: 10%;
-  font-size: 16px;
-}
 
 .article-contatiner h1, h2, h3, h4, h5, h6, p{
   width: 85%;
@@ -37,7 +46,7 @@
   text-align: justify;
 }
 
-.first-section{
+.first-section, .second-section, .third-section, .fourth-section{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,38 +69,38 @@ p{
   padding: 10px 15%;
 }
 
-.primary {
+.back-button{
+  display: flex;
+  font-size: 30px;
+  cursor: pointer;
+  margin: 10px 15px;
+}
+
+.back-button:hover{
+  color: #ed2449;
+}
+
+.img-primary {
   margin: auto;
   max-width: 70%;
+  padding-top: 10px;
   border-radius: 20px;
 }
 
-.second-section{
-  display: flex;
-  justify-content: center;
-  padding: 15px 0;
-
-}
-
-.secondary {
+.img-secondary {
   margin: auto;
-  max-width: 40%;
+  max-width: 50%;
   border-radius: 20px;
 }
 
-
-@media  (max-width: 1024px) {
-
+.review-button{
+  display: flex;
+  margin: 10px auto;
 }
+
 
 @media (max-width: 990px) {
-  .back-button{
-    margin: 20px auto;
-    font-size: 24px;
-    width: 30%;
-  }
-
-  .primary {
+  .img-primary {
     max-width: 100%;
   }
 
@@ -109,7 +118,7 @@ p{
     font-size: 1.5em;
     width: 100%;
   }
-  .secondary {
+  .img-secondary {
     max-width: 70%;
   }
 }

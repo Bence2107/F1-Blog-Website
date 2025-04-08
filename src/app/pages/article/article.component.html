@@ -1,44 +1,50 @@
-<div class="article-contatiner" *ngIf="article">
-  <div *ngIf="!article.isReview">
-    <div class="first-section">
-      <button routerLink="/news" mat-flat-button class="back-button">Vissza</button>
-      <img [src]="'/img/news-images/' + article.id + '/primary.jpg'" [alt]="article.title " class="primary">
-      <h1>{{ article.title }}</h1>
-      <h2>{{ article.summary }}</h2>
-    </div>
-
-    <p [innerHTML]="article.first_section"></p>
-
-    <div class="second-section">
-      <img [src]="'/img/news-images/' + article.id + '/secondary.jpg'" [alt]="article.label " class="secondary">
-    </div>
-
-    <p [innerHTML]="article.last_section"></p>
-
-    <div>
-      <button *ngIf="article.reviewUrl" mat-flat-button class="back-button" [routerLink]="['/article', article.reviewUrl]">Összefoglaló</button>
+<main>
+  <div class="article-contatiner" *ngIf="article">
+    <div *ngIf="!article.isReview">
+      <mat-icon routerLink="/news" class="back-button" fontIcon="arrow_back"></mat-icon>
+      <button *ngIf="article.reviewUrl" mat-flat-button class="review-button" [routerLink]="['/article', article.reviewUrl]">Összefoglaló a nagydíjról</button>
+      <div class="first-section">
+        <img [src]="'/img/news-images/' + article.id + '/primary.jpg'" [alt]="article.title " class="img-primary">
+        <h1>{{ article.title }}</h1>
+        <h2>{{ article.summary }}</h2>
+      </div>
+      <p [innerHTML]="article.first_section"></p>
+      <div class="second-section">
+        <img [src]="'/img/news-images/' + article.id + '/secondary.jpg'" [alt]="article.label " class="img-secondary">
+      </div>
+      <div class="last-section">
+        <p [innerHTML]="article.last_section"></p>
+      </div>
 
     </div>
+    <div *ngIf="article.isReview">
+      <mat-icon routerLink="/news" class="back-button" fontIcon="arrow_back"></mat-icon>
+      <div class="first-section">
+        <img [src]="'/img/reviews-images/' + article.id + '/primary.jpg'" [alt]="article.title " class="img-primary">
+        <h1>{{ article.title }}</h1>
+        <h2>{{ article.summary }}</h2>
+      </div>
+      <p [innerHTML]="article.first_section"></p>
+      <p [innerHTML]="article.second_section"></p>
+      <div class="second-section">
+        <img [src]="'/img/reviews-images/' + article.id + '/secondary.jpg'" [alt]="article.label " class="img-secondary">
+      </div>
+      <p [innerHTML]="article.third_section"></p>
+      <div class="third-section">
+        <img [src]="'/img/reviews-images/' + article.id + '/third.jpg'" [alt]="article.label " class="img-secondary">
+      </div>
+      <p [innerHTML]="article.fourth_section"></p>
+      <div class="fourth-section">
+        <img [src]="'/img/reviews-images/' + article.id + '/fourth.jpg'" [alt]="article.label " class="img-secondary">
+      </div>
+      <div class="last-section">
+        <p [innerHTML]="article.last_section"></p>
+      </div>
 
+      <button mat-flat-button class="review-button" routerLink="/news">Híreink</button>
+    </div>
   </div>
-
-  <div *ngIf="article.isReview">
-    <button routerLink="/news" class="back-button">Vissza</button>
-
-    <img [src]="'/img/reviews-images/' + article.id + '/primary.jpg'" [alt]="article.label ">
-    <h1>{{ article.title }}</h1>
-    <p>{{ article.first_section }}</p>
-    <img [src]="'/img/reviews-images/' + article.id + '/secondary.jpg'" [alt]="article.label ">
-    <p>{{ article.second_section }}</p>
-    <img [src]="'/img/reviews-images/' + article.id + '/third.jpg'" [alt]="article.label ">
-    <p>{{ article.third_section }}</p>
-    <p>{{ article.fourth_section }}</p>
-    <img [src]="'/img/reviews-images/' + article.id + '/fourth.jpg'" [alt]="article.label ">
-    <p>{{ article.last_section }}</p>
-
-    <button routerLink="/news">Híreink</button>
+  <div class="article-contatiner" *ngIf="!article">
+    <p>Article not found.</p>
   </div>
-</div>
-<div class="article-contatiner" *ngIf="!article">
-  <p>Article not found.</p>
-</div>
+</main>
