@@ -1,7 +1,7 @@
 <main>
   <div class="article-contatiner" *ngIf="article">
     <div *ngIf="!article.isReview">
-      <mat-icon routerLink="/news" class="back-button" fontIcon="arrow_back"></mat-icon>
+      <mat-icon routerLink="/news" class="back-button">arrow_back</mat-icon>
       <button *ngIf="article.reviewUrl" mat-flat-button class="review-button" [routerLink]="['/article', article.reviewUrl]">Összefoglaló a nagydíjról</button>
       <div class="first-section">
         <img [src]="'/img/news-images/' + article.id + '/primary.jpg'" [alt]="article.title " class="img-primary">
@@ -43,8 +43,13 @@
 
       <button mat-flat-button class="review-button" routerLink="/news">Híreink</button>
     </div>
+
+
   </div>
   <div class="article-contatiner" *ngIf="!article">
     <p>Article not found.</p>
   </div>
+
+  <app-article-comments [articleId]="article.id"/>
 </main>
+

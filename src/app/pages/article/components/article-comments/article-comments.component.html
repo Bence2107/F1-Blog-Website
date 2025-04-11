@@ -1,0 +1,20 @@
+<div class="comment-container">
+  <h1>Hozzászólások</h1>
+  <div class="comments">
+    <div class="comment-item" *ngFor="let comment_item of comments">
+      <div class="user-info">
+        <img [src]="comment_item.profileImage" (error)="comment_item.profileImage = '/img/profile_pictures/avatar.jpg'" class="profile-img" alt="{{ comment_item.userName }}"/>
+        <h2>{{comment_item.userName}}</h2>
+        <button *ngIf="loggedId == comment_item.userid" class="delete-button" mat-flat-button >Törlés</button>
+      </div>
+      <div class="content">
+        <p>{{comment_item.content}}</p>
+      </div>
+      <p>{{ comment_item.timestamp }}</p>
+    </div>
+  </div>
+  <div class="comments" *ngIf="comments">
+      <p>Ehhez a poszthoz még nem szóltak hozzá! Légy te az első!</p>
+  </div>
+</div>
+

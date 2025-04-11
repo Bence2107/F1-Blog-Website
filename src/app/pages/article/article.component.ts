@@ -5,6 +5,7 @@ import {NgIf} from '@angular/common';
 import {news_article_list, review_article_list} from '../../constants/articles';
 import {MatButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
+import {ArticleCommentsComponent} from './components/article-comments/article-comments.component';
 
 @Component({
   selector: 'app-article',
@@ -13,6 +14,7 @@ import {MatIcon} from '@angular/material/icon';
     RouterLink,
     MatButton,
     MatIcon,
+    ArticleCommentsComponent,
   ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss'

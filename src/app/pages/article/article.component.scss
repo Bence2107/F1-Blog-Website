@@ -11,21 +11,27 @@
 
 *{
   box-sizing: border-box;
-  background-color: var(--primary-background);
   color: var(--primary-text);
   margin: 0;
 
 }
 
 main{
-  animation: fade-in 0.7s
+  animation: fade-in 0.7s;
+  background-color: var(--secondary-background);
+
 }
 
 .article-contatiner{
   display: flex;
-  background-color: var(--secondary-background);
+  background-color: var(--primary-background);
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
   justify-content: center;
   align-items: center;
+  width: 95%;
+  border-radius: 30px;
 
   @include mat.button-overrides((
     filled-container-color: #f8274f,
@@ -45,6 +51,7 @@ main{
 .article-contatiner p{
   text-align: justify;
 }
+
 
 .first-section, .second-section, .third-section, .fourth-section{
   display: flex;
@@ -98,6 +105,12 @@ p{
   margin: 10px auto;
 }
 
+
+
+app-article-comments {
+  display: flex;
+  margin: auto;
+}
 
 @media (max-width: 990px) {
   .img-primary {
