@@ -16,18 +16,13 @@
     </ul>
   </nav>
   <ng-container *ngIf="!isLogged(); else loggedInTemplate">
-    <button routerLink="/login" mat-flat-button>Bejelentkezés</button>
+    <button class="login-button" routerLink="/login" mat-flat-button>Bejelentkezés</button>
   </ng-container>
 
   <ng-template #loggedInTemplate>
     <div class="avatar" [routerLink]="['/profile', loggedId]">
-      <img
-        [src]="'assets/img/profile_pictures/' + loggedId + '.jpg'"
-        (error)="handleImageError($event)"
-        alt="User Profile"
-        class="profile-img">
+      <img [src]="loadAvatar()" alt="User Profile" class="profile-img">
     </div>
-    <button (click)="logout()">Kijelentkezés</button>
   </ng-template>
   <img (click)="toggleTheme()"  [src]="'/assets/img/header/dark-light-mode-icon.png'" alt="" class="dark-light-switch-button">
 </header>

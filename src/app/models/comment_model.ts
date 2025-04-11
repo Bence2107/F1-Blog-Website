@@ -1,6 +1,6 @@
 export interface CommentModel {
   id: number;
-  articleId: number;
+  articleUrl: string;
   userid: number;
   content: string;
   timestamp: Date;

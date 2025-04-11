@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent} from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {AuthService} from './pages/auth/auth_service';
+import {NgIf} from '@angular/common';
 
 
 @Component({
@@ -23,15 +24,25 @@ import {AuthService} from './pages/auth/auth_service';
     FooterComponent,
     MatToolbarModule,
     MatIconModule,
+    NgIf,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
+  loggedId : number | null = null;
+
   constructor(private authService: AuthService) {
+    this.loggedId = this.authService.getLoggedId();
   }
 
-  ngOnInit() {
-    this.authService.setLoggedInStatus(true,1)
+  isloggedin(){
+    return this.authService.getLoggedInStatus();
+  }
+
+  ngOnInit(){
+    this.authService.loggedId$.subscribe(id => {
+      this.loggedId = id;
+    });
   }
 }

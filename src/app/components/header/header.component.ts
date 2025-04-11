@@ -1,10 +1,11 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { NgIf } from '@angular/common';
-import {MatButton, MatIconButton} from '@angular/material/button';
-import {Router, RouterLink, RouterLinkActive} from '@angular/router';
+import  {MatButton, MatIconButton } from '@angular/material/button';
+import { RouterLink, RouterLinkActive} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
 import {AuthService} from '../../pages/auth/auth_service';
+import {users_list} from '../../constants/users';
 
 @Component({
   selector: 'app-header',
@@ -20,46 +21,48 @@ import {AuthService} from '../../pages/auth/auth_service';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
-  loggedId : any;
+  isDarkMode: boolean = true;
+  loggedId: number | null = null;
+  userData: any;
 
-  constructor(private auth: AuthService,private breakpointObserver: BreakpointObserver, private router: Router) {
+  @Output() toggleSidenav = new EventEmitter<void>();
+  isScreenSmall: boolean = false;
+
+  constructor(private auth: AuthService,private breakpointObserver: BreakpointObserver) {
     this.breakpointObserver.observe(['(max-width: 990px)']).subscribe(result => {
       this.isScreenSmall = result.matches;
     });
   }
 
-  isLogged(): boolean {
-    return this.auth.getLoggedInStatus();
-  }
-
-  login(userid: number): void {
-    this.auth.setLoggedInStatus(true, userid);
-    this.loggedId = this.auth.getLoggedId();
-  }
-
-  logout(): void {
-    this.auth.setLoggedInStatus(false, null);
-    this.router.navigate(['/home']);
-  }
-
-  isDarkMode: boolean = true;
-
-  @Output() toggleSidenav = new EventEmitter<void>();
-  isScreenSmall: boolean = false;
-
   ngOnInit(): void {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     this.isDarkMode = savedTheme === 'dark';
     this.setTheme(savedTheme);
+    this.auth.loggedId$.subscribe(id => {
+      this.loggedId = id;
+      this.userData = users_list.find(user => user.id === this.loggedId);
+      if (this.loggedId) {
+        this.userData = users_list.find(user => user.id === this.loggedId);
+        if (!this.userData) {
+          console.error('User not found!');
+        }
+      }
+    });
 
-    this.login(1);
   }
 
-  handleImageError(event: Event): void {
-    const imgElement = event.target as HTMLImageElement;
-    imgElement.src = '/img/profile_pictures/avatar.jpg';
+  loadAvatar(): string {
+    if(this.userData && this.userData.avatarUrl) {
+      return `assets/img/profile_pictures/${this.loggedId}.jpg`;
+    }
+    else{
+      return `assets/img/profile_pictures/avatar.jpg`;
+    }
   }
 
+  isLogged(): boolean {
+    return this.auth.getLoggedInStatus();
+  }
 
   toggleTheme() {
     this.isDarkMode = !this.isDarkMode;

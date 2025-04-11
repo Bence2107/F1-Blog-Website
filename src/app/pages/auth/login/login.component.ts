@@ -1,8 +1,9 @@
-import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatButton} from '@angular/material/button';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import {AuthService} from '../auth_service';
 
 @Component({
   selector: 'app-login',
@@ -18,19 +19,29 @@ import {RouterLink} from '@angular/router';
     RouterLink,
   ],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
 
+  login() {
+    this.auth.login(1) //login dummy with id (not checking all users)
+  }
+
   onSubmit() {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
+    }
+  }
+
+  ngOnInit(): void {
+    if(this.auth.getLoggedInStatus()){
+      this.router.navigate(['/profile', this.auth.getLoggedId()]);
     }
   }
 

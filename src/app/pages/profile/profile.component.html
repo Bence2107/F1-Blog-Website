@@ -1,1 +1,25 @@
-<p>profile works!</p>
+<main>
+  <div class="profile_container">
+    <h1>Adatok</h1>
+    <div class="profile-info">
+      <img [src]="loadAvatar()" alt="">
+      <div class="profile-data">
+        <div class="info">
+          <h2>Felhasználónév:</h2>
+          <h4>{{userData.username}}</h4>
+        </div>
+        <div class="info">
+          <h2>Email:</h2>
+          <h4>{{userData.email}}</h4>
+        </div>
+        <div class="profile-buttons">
+          <button mat-flat-button>Törlés</button>
+          <button mat-flat-button (click)="logout()">Kijelentkezés</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <app-users-comments [loggedId] ="userData.id"/>
+</main>

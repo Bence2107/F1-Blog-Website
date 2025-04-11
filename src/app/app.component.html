@@ -7,7 +7,8 @@
       <li><a routerLink="/home" routerLinkActive="activeLink" (click)="sidenav.close()">Főoldal</a></li>
       <li><a routerLink="/news" routerLinkActive="activeLink" (click)="sidenav.close()">Hírek</a></li>
       <li><a routerLink="/reviews" routerLinkActive="activeLink" (click)="sidenav.close()">Összefoglalók</a></li>
-      <li><a routerLink="/login" routerLinkActive="activeLink" (click)="sidenav.close()">Bejelentkezés</a></li>
+      <li *ngIf="!isloggedin()"><a routerLink="/login" routerLinkActive="activeLink" (click)="sidenav.close()">Bejelentkezés</a></li>
+      <li *ngIf="isloggedin()"><a [routerLink]="['/profile', loggedId]" routerLinkActive="activeLink" (click)="sidenav.close()">Profil</a></li>
     </ul>
   </mat-sidenav>
   <mat-sidenav-content>

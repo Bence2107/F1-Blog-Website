@@ -3,21 +3,21 @@ import {CommentModel} from '../models/comment_model';
 export const comments_list : CommentModel[] = [
   {
     id: 1,
-    articleId: 4,
+    articleUrl: "verstappen-nyert-japan-festesben",
     userid: 1,
     content: "Szépen ment Max! aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaa aaaa aaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaa aaaaaaaaaaaaaaaaaaaaa",
     timestamp: new Date()
   },
   {
     id: 2,
-    articleId: 4,
+    articleUrl: "verstappen-nyert-japan-festesben",
     userid: 2,
     content: "Lol",
     timestamp: new Date()
   },
   {
     id: 3,
-    articleId: 2,
+    articleUrl: "ferrari-25-attores",
     userid: 1,
     content: "Nem jók a ferrarik",
     timestamp: new Date()

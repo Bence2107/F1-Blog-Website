@@ -6,52 +6,43 @@
 
 .comment-container h1 {
   @include comment_styles.comment-container-h1;
-
 }
 
 .comments {
   @include comment_styles.comments;
-
 }
 
 .comment-item {
   @include comment_styles.comment-item;
-
+  cursor: pointer;
 }
 
 .comment-item > :not(.user-info) {
   @include comment_styles.not-comment-item;
-
 }
 
 .user-info{
   @include comment_styles.user-info;
-
 }
 
 .user-info button {
   @include comment_styles.user-info-button;
-
 }
 
 .content {
   @include comment_styles.content;
-
 }
 
 .content p {
   @include comment_styles.content-p;
-
 }
 
 .comment-content {
   @include comment_styles.comment-content;
-
 }
 
 .profile-img {
   @include comment_styles.profile-img;
-
 }
 
 .comment-date {

@@ -1,0 +1,16 @@
+<div class="comment-container">
+  <h1>Felhasználó hozzászólásai</h1>
+  <div class="comments">
+    <div class="comment-item" *ngFor="let comment_item of comments" [routerLink]="['/article', comment_item.articleUrl]">
+      <div class="user-info">
+        <img [src]="comment_item.profileImage" class="profile-img" alt="{{ comment_item.userName }}"/>
+        <h2>{{comment_item.userName}}</h2>
+        <button *ngIf="loggedId == comment_item.userid" class="delete-button" mat-flat-button >Törlés</button>
+      </div>
+      <div class="content">
+        <p>{{comment_item.content}}</p>
+      </div>
+      <p>{{ comment_item.timestamp }}</p>
+    </div>
+  </div>
+</div>

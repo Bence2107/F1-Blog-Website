@@ -14,7 +14,7 @@
           <input matInput type="password" formControlName="password" />
         </mat-form-field>
 
-        <button mat-flat-button color="primary" class="login-form-button" type="submit">Belépés</button>
+        <button (click)="login()" mat-flat-button color="primary" class="login-form-button" type="submit">Belépés</button>
 
         <p class="form-text">Még nem regisztráltál? Megteheted <a routerLink="/signup"> itt</a>.</p>
       </form>
