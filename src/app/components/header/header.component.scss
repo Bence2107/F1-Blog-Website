@@ -107,6 +107,13 @@ header {
   transform: scale(1.2);
 }
 
+.avatar img{
+  cursor: pointer;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
 @media (min-width: 990px) and (max-width: 1350px) {
   .logo{
     display: flex;

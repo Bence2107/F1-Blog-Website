@@ -7,7 +7,7 @@
     (click)="toggleSidenav.emit()">
     <mat-icon>menu</mat-icon>
   </button>
-  <img src="/img/logo.png" alt="Drs Zone" class="logo">
+  <img [src]="'/img/logo.png'" alt="Drs Zone" class="logo">
   <nav *ngIf="!isScreenSmall">
     <ul class="nav_links">
       <li><a routerLink="/home" routerLinkActive="activeLink">Főoldal</a></li>
@@ -15,7 +15,19 @@
       <li><a routerLink="/reviews" routerLinkActive="activeLink">Összefoglalók</a></li>
     </ul>
   </nav>
-  <button routerLink="/login"  mat-flat-button class="login-button">Bejelentkezés</button>
-  <mat-icon routerLink="/login" routerLinkActive="activeLink" class="account-icon" fontIcon="person"></mat-icon>
-  <img (click)="toggleTheme()"  src="/assets/dark-light-mode-icon.png" alt="" class="dark-light-switch-button">
+  <ng-container *ngIf="!isLogged(); else loggedInTemplate">
+    <button routerLink="/login" mat-flat-button>Bejelentkezés</button>
+  </ng-container>
+
+  <ng-template #loggedInTemplate>
+    <div class="avatar" [routerLink]="['/profile', loggedId]">
+      <img
+        [src]="'/img/profile_pictures/' + loggedId + '.jpg'"
+        (error)="handleImageError($event)"
+        alt="User Profile"
+        class="profile-img">
+    </div>
+    <button (click)="logout()">Kijelentkezés</button>
+  </ng-template>
+  <img (click)="toggleTheme()"  [src]="'/assets/dark-light-mode-icon.png'" alt="" class="dark-light-switch-button">
 </header>
