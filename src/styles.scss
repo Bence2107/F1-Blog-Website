@@ -68,3 +68,81 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+/* Comments */
+@mixin comment-container{
+  display: flex;
+  width: 95%;
+  margin: 0 auto 20px auto;
+  flex-direction: column;
+  background-color: var(--primary-background);
+  border-radius: 30px;
+}
+
+@mixin comment-container-h1 {
+  text-align: center;
+  padding: 5px;
+}
+
+@mixin comments {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+  gap: 16px;
+  padding: 30px;
+}
+
+@mixin comment-item {
+  display: flex;
+  width: 1200px;
+  background-color: var(--secondary-background);
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 30px;
+  border-bottom: var(--primary-background);
+}
+
+@mixin  not-comment-item {
+  margin-left: 10px;
+}
+
+@mixin user-info{
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin user-info-button {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+@mixin content {
+  display: block;
+  text-align: justify;
+}
+
+@mixin content-p {
+  overflow-wrap: break-word;
+}
+
+@mixin comment-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex-grow: 1;
+  max-width: 700px;
+}
+
+@mixin profile-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 60%;
+  padding: 5px;
+}
+
+@mixin comment-date {
+  width: 100%;
+  text-align: right;
+  margin-top: 8px;
+  font-size: 0.875rem;
+}
