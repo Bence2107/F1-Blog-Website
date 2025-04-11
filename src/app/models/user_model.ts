@@ -3,5 +3,4 @@ export interface UserModel {
   email: string;
   username: string;
   avatarUrl?: string;
-  joinedAt: string;
 }
