@@ -3,7 +3,7 @@
   <div class="comments">
     <div class="comment-item" *ngFor="let comment_item of comments">
       <div class="user-info">
-        <img [src]="comment_item.profileImage" (error)="comment_item.profileImage = '/img/profile_pictures/avatar.jpg'" class="profile-img" alt="{{ comment_item.userName }}"/>
+        <img [src]="comment_item.profileImage" (error)="comment_item.profileImage = 'assets/img/profile_pictures/avatar.jpg'" class="profile-img" alt="{{ comment_item.userName }}"/>
         <h2>{{comment_item.userName}}</h2>
         <button *ngIf="loggedId == comment_item.userid" class="delete-button" mat-flat-button >Törlés</button>
       </div>

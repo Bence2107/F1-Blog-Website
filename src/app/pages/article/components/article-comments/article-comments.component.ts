@@ -32,7 +32,7 @@ export class ArticleCommentsComponent {
       .map(c => ({
         ...c,
         userName: users_list.find(u => u.id === c.userid)?.username || 'Ismeretlen felhasználó',
-        profileImage: `/img/profile_pictures/${c.userid}.jpg`
+        profileImage: `assets/img/profile_pictures/${c.userid}.jpg`
       }));
     this.loggedId = this.auth.getLoggedId();
   }
