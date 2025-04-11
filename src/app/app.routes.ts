@@ -20,7 +20,7 @@ export const routes: Routes = [
 
   { path: "signup", component: SignupComponent },
 
-  { path: "profile", component: ProfileComponent },
+  { path: "profile/:id", component: ProfileComponent },
 
   { path: "article/:url", component: ArticleComponent },
 
