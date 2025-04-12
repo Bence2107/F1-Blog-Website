@@ -29,6 +29,18 @@
     </div>
   </div>
   <div class="comments" *ngIf="!loadComments()">
+      <div class="new-comment-item" *ngIf="isLoggedIn()">
+        <img [src]="loadAvatar()" alt="Profile" class="profile-img">
+        <form class="new-comment-form">
+          <mat-form-field style="width:60vw" color="primary">
+            <input matInput placeholder="Írjon egy kommentet..."/>
+          </mat-form-field>
+          <button mat-flat-button color="primary" type="submit">Komment</button>
+        </form>
+      </div>
+      <div class="new-comment-item-none" *ngIf="!isLoggedIn()">
+        <p>Hozzászóláshoz jelentkezz be!</p>
+      </div>
       <p>Ehhez a poszthoz még nem szóltak hozzá! Légy te az első!</p>
   </div>
 </div>
