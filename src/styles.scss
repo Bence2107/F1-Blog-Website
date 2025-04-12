@@ -48,6 +48,15 @@
   color: var(--dark-secondary-text);
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 html {
   @include mat.theme((
     color: (
@@ -67,6 +76,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
 
 /* Comments */
 @mixin comment-container{

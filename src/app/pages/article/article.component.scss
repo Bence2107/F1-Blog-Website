@@ -1,14 +1,5 @@
 @use '@angular/material' as mat;
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 *{
   box-sizing: border-box;
   color: var(--primary-text);
@@ -17,7 +8,6 @@
 }
 
 main{
-  animation: fade-in 0.7s;
   background-color: var(--primary-background);
 
 }
