@@ -22,7 +22,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = Number(this.route.snapshot.paramMap.get('id'));
-    this.userData = users_list.find(user => user.id === this.userId);
     if (this.userId) {
       this.userData = users_list.find(user => user.id === this.userId);
       if (!this.userData) {
