@@ -1,6 +1,6 @@
 <div class="comment-container">
   <h1>Hozzászólások</h1>
-  <div class="comments">
+  <div class="comments" *ngIf="loadComments()">
     <div class="comment-item" *ngFor="let comment_item of comments">
       <div class="user-info">
         <img [src]="comment_item.profileImage" (error)="comment_item.profileImage = 'assets/img/profile_pictures/avatar.jpg'" class="profile-img" alt="{{ comment_item.userName }}"/>
@@ -13,7 +13,7 @@
       <p>{{ comment_item.timestamp }}</p>
     </div>
   </div>
-  <div class="comments" *ngIf="comments">
+  <div class="comments" *ngIf="!loadComments()">
       <p>Ehhez a poszthoz még nem szóltak hozzá! Légy te az első!</p>
   </div>
 </div>

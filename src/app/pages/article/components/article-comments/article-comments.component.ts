@@ -35,11 +35,12 @@ export class ArticleCommentsComponent implements OnInit {
           userName: user?.username || 'Ismeretlen felhasználó',
           profileImage: user?.avatarUrl ? `assets/img/profile_pictures/${c.userid}.jpg` : 'assets/img/profile_pictures/avatar.jpg'
         };
-      });
+      }) || [];
     this.loggedId = this.auth.getLoggedId();
   }
 
-
-
+  loadComments() : boolean{
+    return this.comments.length !== 0;
+  }
 
 }
