@@ -27,9 +27,12 @@ import {NgIf} from '@angular/common';
     NgIf,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+
 })
 export class AppComponent implements OnInit {
+  title: string = "F1-Blog-Website";
+
   loggedId : number | null = null;
 
   constructor(private authService: AuthService) {
