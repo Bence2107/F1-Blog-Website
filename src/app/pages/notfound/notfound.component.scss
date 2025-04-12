@@ -1,0 +1,36 @@
+@use '@angular/material' as mat;
+
+main {
+  background-color: var(--primary-background);
+  padding: 25px 2%
+}
+
+.error-container{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  padding: 5vh;
+  border-radius: 30px;
+  background-color: var(--secondary-background);
+
+}
+
+.error-container img {
+  width: 60%;
+}
+
+.error-container h2 {
+  text-align: center;
+}
+
+.error-container {
+  @include mat.fab-overrides((
+    container-color: #f8274f,
+    foreground-color: white,
+    ripple-color: #f8274f,
+  ));
+
+}

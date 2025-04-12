@@ -42,10 +42,9 @@ header{
 .nav_links li {
   display: flex;
   align-items: center;
-}
-
-.nav_links li a {
+  cursor: pointer;
   transition: all 0.3s ease 0s;
+
 }
 
 .nav_links li a{
@@ -55,12 +54,12 @@ header{
   display: inline-block;
 }
 
-.nav_links li a:hover{
+.nav_links li :hover, .nav_links li:hover mat-icon{
   color: #d10101;
 }
 
-.nav_links li a::after,
-.nav_links li a::before {
+.nav_links li a::after,.nav_links li mat-icon::after,
+.nav_links li a::before, .nav_links li a::before {
   content: '';
   position: absolute;
   width: 100%;
@@ -73,13 +72,13 @@ header{
   transition: transform 0.15s ease-out;
 }
 
-.nav_links li a::before {
+.nav_links li a::before,.nav_links li mat-icon::before {
   top: -5px;
   transform-origin: left;
 }
 
-.nav_links li:hover a::after,
-.nav_links li:hover a::before {
+.nav_links li:hover a::after,.nav_links li:hover mat-icon::after,
+.nav_links li:hover a::before, .nav_links li:hover mat-icon::before{
   transform: scaleX(1);
 }
 

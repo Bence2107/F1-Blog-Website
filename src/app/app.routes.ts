@@ -6,6 +6,7 @@ import {LoginComponent} from './pages/auth/login/login.component';
 import {ProfileComponent} from './pages/profile/profile.component';
 import {ArticleComponent} from './pages/article/article.component';
 import {ReviewsComponent} from './pages/reviews/reviews.component';
+import {NotfoundComponent} from './pages/notfound/notfound.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,5 +24,7 @@ export const routes: Routes = [
   { path: "profile/:id", component: ProfileComponent },
 
   { path: "article/:url", component: ArticleComponent },
+
+  { path: '**', component: NotfoundComponent },
 
 ];
