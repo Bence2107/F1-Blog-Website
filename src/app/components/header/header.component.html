@@ -7,7 +7,7 @@
     (click)="toggleSidenav.emit()">
     <mat-icon>menu</mat-icon>
   </button>
-  <img [src]="'assets/img/header/logo.png'" alt="Drs Zone" class="logo">
+  <img [src]="'assets/img/header/logo.png'" [routerLink]="'home'" alt="Drs Zone" class="logo">
   <nav *ngIf="!isScreenSmall">
     <ul class="nav_links">
       <li><a routerLink="/home" routerLinkActive="activeLink">Főoldal</a></li>
