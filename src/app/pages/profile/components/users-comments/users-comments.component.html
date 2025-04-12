@@ -1,6 +1,6 @@
 <div class="comment-container">
   <h1>Felhasználó hozzászólásai</h1>
-  <div class="comments">
+  <div class="comments" *ngIf="loadUsersComments()">
     <div class="comment-item" *ngFor="let comment_item of comments" [routerLink]="['/article', comment_item.articleUrl]">
       <div class="user-info">
         <img [src]="comment_item.profileImage" class="profile-img" alt="{{ comment_item.userName }}"/>
@@ -12,5 +12,8 @@
       </div>
       <p>{{ comment_item.timestamp }}</p>
     </div>
+  </div>
+  <div class="comments" *ngIf="!loadUsersComments()">
+      <p>Nem kommenteltél meg egyik cikkünk alá sem!</p>
   </div>
 </div>

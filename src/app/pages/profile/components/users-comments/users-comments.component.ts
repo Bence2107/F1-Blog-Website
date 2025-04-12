@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
 import {MatButton} from '@angular/material/button';
-import {AuthService} from '../../../auth/auth_service';
 import {CommentModel} from '../../../../models/comment_model';
 import {comments_list} from '../../../../constants/comments_list';
 import {users_list} from '../../../../constants/users';
@@ -33,5 +32,9 @@ export class UsersCommentsComponent implements OnInit {
           profileImage: user?.avatarUrl ? `assets/img/profile_pictures/${c.userid}.jpg` : 'assets/img/profile_pictures/avatar.jpg'
         };
       });
+  }
+
+  loadUsersComments(): boolean {
+    return this.comments.length !== 0;
   }
 }
