@@ -74,7 +74,7 @@ body {
   width: 95%;
   margin: 0 auto 20px auto;
   flex-direction: column;
-  background-color: var(--primary-background);
+  background-color: var(--secondary-background);
   border-radius: 30px;
 }
 
@@ -103,7 +103,7 @@ body {
   display: flex;
   width: 100%;
   justify-content: center ;
-  background-color: var(--secondary-background);
+  background-color: var(--primary-background);
   gap: 16px;
   border-radius: 30px;
   padding-top: 20px;
@@ -136,7 +136,7 @@ body {
   display: flex;
   width: 100%;
   justify-content: center ;
-  background-color: var(--secondary-background);
+  background-color: var(--primary-background);
   gap: 16px;
   border-radius: 30px;
 
@@ -168,11 +168,10 @@ body {
 @mixin comment-item {
   display: flex;
   width: 100%;
-  background-color: var(--secondary-background);
+  background-color: var(--primary-background);
   flex-direction: column;
   padding: 5px;
   border-radius: 30px;
-  border-bottom: var(--primary-background);
 
   @media (max-width: 990px) {
     width: 90%;
