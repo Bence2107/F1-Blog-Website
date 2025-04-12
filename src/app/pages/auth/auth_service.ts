@@ -9,7 +9,6 @@ export class AuthService {
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   private loggedIdSubject = new BehaviorSubject<number | null>(null);
 
-  isLoggedIn$ = this.isLoggedInSubject.asObservable();
   loggedId$ = this.loggedIdSubject.asObservable();
 
   constructor(private router: Router) {}
