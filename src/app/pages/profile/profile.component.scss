@@ -15,12 +15,12 @@
 
 main {
   animation: fade-in 0.7s;
-  background-color: var(--secondary-background);
+  background-color: var(--primary-background);
 }
 
 .profile_container {
   display: flex;
-  background-color: var(--primary-background);
+  background-color: var(--secondary-background);
   flex-direction: column;
   padding: 20px;
   margin-bottom: 20px;
@@ -40,7 +40,7 @@ main {
   align-items: center;
   border-radius: 30px;
   padding: 20px;
-  background-color: var(--secondary-background);
+  background-color: var(--primary-background);
 }
 
 .profile-info img {

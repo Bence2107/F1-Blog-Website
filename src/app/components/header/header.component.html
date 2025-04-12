@@ -10,9 +10,18 @@
   <img [src]="'assets/img/header/logo.png'" [routerLink]="'home'" alt="Drs Zone" class="logo">
   <nav *ngIf="!isScreenSmall">
     <ul class="nav_links">
-      <li><a routerLink="/home" routerLinkActive="activeLink">Főoldal</a></li>
-      <li><a routerLink="/news" routerLinkActive="activeLink">Hírek</a></li>
-      <li><a routerLink="/reviews" routerLinkActive="activeLink">Összefoglalók</a></li>
+      <li routerLinkActive="activeLink">
+        <a routerLink="/home" routerLinkActive="activeLink" >Főoldal</a>
+        <mat-icon>home</mat-icon>
+      </li>
+      <li routerLinkActive="activeLink">
+        <a routerLink="/news" routerLinkActive="activeLink">Hírek</a>
+        <mat-icon>newspaper</mat-icon>
+      </li>
+      <li routerLinkActive="activeLink">
+        <a routerLink="/reviews" routerLinkActive="activeLink">Összefoglalók</a>
+        <mat-icon>rate_review</mat-icon>
+      </li>
     </ul>
   </nav>
   <ng-container *ngIf="!isLogged(); else loggedInTemplate">

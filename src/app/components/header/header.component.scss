@@ -40,7 +40,8 @@ header{
   gap: 16px;
 }
 .nav_links li {
-  display: inline-block;
+  display: flex;
+  align-items: center;
 }
 
 .nav_links li a {
@@ -48,7 +49,7 @@ header{
 }
 
 .nav_links li a{
-  padding: 30px;
+  padding: 15px;
   color: #000000;
   position: relative;
   display: inline-block;
@@ -117,7 +118,7 @@ header {
 @media (min-width: 990px) and (max-width: 1350px) {
   .logo{
     display: flex;
-    width: 40%;
+    width: 35%;
   }
 
   .login-button{
@@ -136,11 +137,11 @@ header {
   }
 
   .nav_links {
-    gap: 1px;
+    gap: 8px;
   }
 
   .nav_links li a {
-    padding: 20px;
+    padding: 8px;
   }
 }
 
