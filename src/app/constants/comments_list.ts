@@ -6,20 +6,20 @@ export const comments_list : CommentModel[] = [
     articleUrl: "verstappen-nyert-japan-festesben",
     userid: 1,
     content: "Szépen ment Max! aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaa aaaa aaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaa aaaaaaaaaaaaaaaaaaaaa",
-    timestamp: new Date()
+    timestamp: "2025.04.03."
   },
   {
     id: 2,
     articleUrl: "verstappen-nyert-japan-festesben",
     userid: 2,
     content: "Lol",
-    timestamp: new Date()
+    timestamp: "2025.04.04."
   },
   {
     id: 3,
     articleUrl: "ferrari-25-attores",
     userid: 1,
     content: "Nem jók a ferrarik",
-    timestamp: new Date()
+    timestamp: "2025.04.01."
   },
 ]

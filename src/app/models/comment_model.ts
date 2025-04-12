@@ -3,5 +3,5 @@ export interface CommentModel {
   articleUrl: string;
   userid: number;
   content: string;
-  timestamp: Date;
+  timestamp: string;
 }
