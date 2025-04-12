@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UsersCommentsComponent} from './components/users-comments/users-comments.component';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {users_list} from '../../constants/users';
 import {MatButton} from '@angular/material/button';
 import {AuthService} from '../auth/auth_service';
@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
   userId: number | null = null;
   userData: any;
 
-  constructor(private route: ActivatedRoute, private auth: AuthService) {}
+  constructor(private route: ActivatedRoute, private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.userId = Number(this.route.snapshot.paramMap.get('id'));
@@ -27,6 +27,9 @@ export class ProfileComponent implements OnInit {
       if (!this.userData) {
         console.error('User not found!');
       }
+    }
+    if (!this.auth.getLoggedInStatus()){
+      this.router.navigate(["/login"]);
     }
   }
 
