@@ -43,13 +43,6 @@
 
       <button mat-flat-button class="review-button" routerLink="/news">Híreink</button>
     </div>
-
-
   </div>
-  <div class="article-contatiner" *ngIf="!article">
-    <p>Article not found.</p>
-  </div>
-
   <app-article-comments [articleUrl]="article.url"/>
 </main>
-

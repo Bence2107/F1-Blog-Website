@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
     if (this.userId) {
       this.userData = users_list.find(user => user.id === this.userId);
       if (!this.userData) {
-        console.error('User not found!');
+        this.router.navigate(["/login"]);
       }
     }
     if (!this.auth.getLoggedInStatus()){
