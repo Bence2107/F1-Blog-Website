@@ -84,7 +84,7 @@ body {
 }
 
 @mixin comments {
-  width: 95%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -98,6 +98,72 @@ body {
   }
 
 }
+
+@mixin new-comment-item {
+  display: flex;
+  width: 100%;
+  justify-content: center ;
+  background-color: var(--secondary-background);
+  gap: 16px;
+  border-radius: 30px;
+  padding-top: 20px;
+
+  form{
+    display: flex;
+    gap: 16px;
+
+    @media (max-width: 990px) {
+      flex-direction: column;
+    }
+  }
+
+  form button{
+    margin: 10px auto;
+  }
+
+
+  @media (max-width: 990px) {
+    width: 90%;
+
+
+    .profile-img{
+      display: none;
+    }
+  }
+}
+
+@mixin new-comment-item-none {
+  display: flex;
+  width: 100%;
+  justify-content: center ;
+  background-color: var(--secondary-background);
+  gap: 16px;
+  border-radius: 30px;
+
+  form{
+    display: flex;
+    gap: 16px;
+
+    @media (max-width: 990px) {
+      flex-direction: column;
+    }
+  }
+
+  form button{
+    margin: 10px auto;
+  }
+
+
+  @media (max-width: 990px) {
+    width: 90%;
+
+
+    .profile-img{
+      display: none;
+    }
+  }
+}
+
 
 @mixin comment-item {
   display: flex;

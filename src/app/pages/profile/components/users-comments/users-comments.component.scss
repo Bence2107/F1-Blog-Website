@@ -14,7 +14,6 @@
 
 .comment-item {
   @include comment_styles.comment-item;
-  & {cursor: pointer;}
 }
 
 .comment-item > :not(.user-info) {

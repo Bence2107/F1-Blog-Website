@@ -40,7 +40,6 @@ export class HeaderComponent implements OnInit {
     this.setTheme(savedTheme);
     this.auth.loggedId$.subscribe(id => {
       this.loggedId = id;
-      this.userData = users_list.find(user => user.id === this.loggedId);
       if (this.loggedId) {
         this.userData = users_list.find(user => user.id === this.loggedId);
         if (!this.userData) {
