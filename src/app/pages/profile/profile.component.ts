@@ -4,16 +4,17 @@ import {Router} from '@angular/router';
 import {MatButton} from '@angular/material/button';
 import {AuthService} from '../auth/auth_service';
 import {UserModel} from '../../models/user_model';
-import {
-  CustomsnackbarComponent,
-} from '../../components/customsnackbar/customsnackbar.component';
+import {CustomsnackbarComponent} from '../../components/customsnackbar/customsnackbar.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {CapitalizeFirstPipe} from '../../pipes/capitalizefirstpipe.pipe';
 
 @Component({
   selector: 'app-profile',
+  standalone: true,
   imports: [
     UsersCommentsComponent,
-    MatButton
+    MatButton,
+    CapitalizeFirstPipe
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
@@ -26,10 +27,11 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.auth.getLoggedInUser().subscribe(user => {
       this.userData = user;
+
+      if (!this.userData || !this.auth.getLoggedInStatus()) {
+        this.router.navigate(["/login"]);
+      }
     });
-    if (!this.userData || !this.auth.getLoggedInStatus()) {
-      this.router.navigate(["/login"]);
-    }
   }
 
   loadAvatar(): string {

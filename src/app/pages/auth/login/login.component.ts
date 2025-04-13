@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.auth.login(1) //login dummy with id (not checking all users)
+    this.auth.login(2) //login dummy with id (not checking all users)
 
     this.snackBar.openFromComponent(CustomsnackbarComponent, {
       data: { message: 'Sikeres Bejelentkezés', actionLabel: 'Rendben' },

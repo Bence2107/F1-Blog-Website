@@ -10,6 +10,6 @@ export const users_list : UserModel[] = [
   {
     id: 2,
     email: "hurajongok@gmail.com",
-    username: "SzevaszVer"
+    username: "szevaszVer"
   }
 ]
