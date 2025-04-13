@@ -21,9 +21,6 @@ import {MatFormField, MatInput} from '@angular/material/input';
 })
 export class ArticleCommentsComponent implements OnInit {
   @Input() articleUrl!: string;
-
-
-  loggedId : any;
   userData: any;
   comments: (CommentModel & { userName: string, profileImage: any })[] = [];
 
@@ -40,13 +37,9 @@ export class ArticleCommentsComponent implements OnInit {
           profileImage: user?.avatarUrl ? `assets/img/profile_pictures/${c.userid}.jpg` : 'assets/img/profile_pictures/avatar.jpg'
         };
       }) || [];
-    this.loggedId = this.auth.getLoggedId();
-    if (this.loggedId) {
-      this.userData = users_list.find(user => user.id === this.loggedId);
-      if (!this.userData) {
-        console.error('User not found!');
-      }
-    }
+    this.auth.getLoggedInUser().subscribe(user => {
+      this.userData = user;
+    });
   }
 
   isLoggedIn() {
@@ -59,11 +52,10 @@ export class ArticleCommentsComponent implements OnInit {
 
   loadAvatar(): string {
     if(this.userData && this.userData.avatarUrl) {
-      return `assets/img/profile_pictures/${this.loggedId}.jpg`;
+      return `assets/img/profile_pictures/${this.userData.id}.jpg`;
     }
     else{
       return `assets/img/profile_pictures/avatar.jpg`;
     }
   }
-
 }

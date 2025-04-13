@@ -30,7 +30,7 @@
   </ng-container>
 
   <ng-template #loggedInTemplate>
-    <div class="avatar" [routerLink]="['/profile', loggedId]">
+    <div class="avatar" [routerLink]="['/profile', userData.id]">
       <img [src]="loadAvatar()" alt="User Profile" class="profile-img">
     </div>
   </ng-template>

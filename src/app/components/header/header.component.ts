@@ -5,7 +5,6 @@ import  {MatButton, MatIconButton } from '@angular/material/button';
 import { RouterLink, RouterLinkActive} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
 import {AuthService} from '../../pages/auth/auth_service';
-import {users_list} from '../../constants/users';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +21,6 @@ import {users_list} from '../../constants/users';
 })
 export class HeaderComponent implements OnInit {
   isDarkMode: boolean = true;
-  loggedId: number | null = null;
   userData: any;
 
   @Output() toggleSidenav = new EventEmitter<void>();
@@ -38,21 +36,14 @@ export class HeaderComponent implements OnInit {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     this.isDarkMode = savedTheme === 'dark';
     this.setTheme(savedTheme);
-    this.auth.loggedId$.subscribe(id => {
-      this.loggedId = id;
-      if (this.loggedId) {
-        this.userData = users_list.find(user => user.id === this.loggedId);
-        if (!this.userData) {
-          console.error('User not found!');
-        }
-      }
+    this.auth.getLoggedInUser().subscribe(user => {
+      this.userData = user;
     });
-
   }
 
   loadAvatar(): string {
     if(this.userData && this.userData.avatarUrl) {
-      return `assets/img/profile_pictures/${this.loggedId}.jpg`;
+      return `assets/img/profile_pictures/${this.userData.id}.jpg`;
     }
     else{
       return `assets/img/profile_pictures/avatar.jpg`;
