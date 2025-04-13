@@ -1,3 +1,6 @@
+@use '@angular/material' as mat;
+
+
 *{
   box-sizing: border-box;
   background-color: var(--primary-background);
@@ -5,9 +8,23 @@
   padding: 15px 2%
 }
 
-h1{
+h1, h3{
   color: var(--primary-text);
   text-align: center;
+}
+
+h2, p{
+  color: var(--primary-text);
+}
+
+p{
+  font-size: 1.2em;
+  text-align: justify;
+}
+
+button{
+  display: flex;
+  margin: auto;
 }
 
 main{
@@ -21,4 +38,28 @@ main{
 
 app-primary-news-list{
   display: flex;
+}
+
+.about-us{
+  background-color: var(--secondary-background);
+  padding: 80px 5%;
+  border-radius: 30px;
+}
+
+
+.welcome-container{
+  border-radius: 30px;
+
+  @include mat.fab-overrides((
+    container-color: #f8274f,
+    foreground-color: white,
+    ripple-color: #f8274f,
+  ));
+}
+
+.welcome-img{
+  display: flex;
+  width: 60%;
+  border-radius: 30px;
+  margin: auto;
 }
