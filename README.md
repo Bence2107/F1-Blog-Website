@@ -12,7 +12,7 @@ git clone https://github.com/Bence2107/F1-Blog-Website
  ```
 #### vagy GitHubon Code -> Download ZIP
 
-### 2. (Függőségek telepítése)
+### 2. (Függőségek telepítése - valamilyen IDE-n belűl)
 ```bash
 npm install
 ```
