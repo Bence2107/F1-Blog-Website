@@ -4,6 +4,8 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {MatButton} from '@angular/material/button';
 import {Router, RouterLink} from '@angular/router';
 import {AuthService} from '../auth_service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {CustomsnackbarComponent} from '../../../components/customsnackbar/customsnackbar.component';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +24,7 @@ import {AuthService} from '../auth_service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router,  private snackBar: MatSnackBar) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -31,6 +33,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.auth.login(1) //login dummy with id (not checking all users)
+
+    this.snackBar.openFromComponent(CustomsnackbarComponent, {
+      data: { message: 'Sikeres Bejelentkezés', actionLabel: 'Rendben' },
+      duration: 3000,
+      horizontalPosition: 'center',
+    });
   }
 
   onSubmit() {

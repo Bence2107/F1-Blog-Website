@@ -4,6 +4,10 @@ import {Router} from '@angular/router';
 import {MatButton} from '@angular/material/button';
 import {AuthService} from '../auth/auth_service';
 import {UserModel} from '../../models/user_model';
+import {
+  CustomsnackbarComponent,
+} from '../../components/customsnackbar/customsnackbar.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +21,7 @@ import {UserModel} from '../../models/user_model';
 export class ProfileComponent implements OnInit {
   userData: UserModel | null = null;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.auth.getLoggedInUser().subscribe(user => {
@@ -39,5 +43,11 @@ export class ProfileComponent implements OnInit {
 
   logout() {
     this.auth.logout();
+
+    this.snackBar.openFromComponent(CustomsnackbarComponent, {
+      data: { message: 'Kijelentkezve', actionLabel: 'Rendben' },
+      duration: 3000,
+      horizontalPosition: 'center',
+    });
   }
 }

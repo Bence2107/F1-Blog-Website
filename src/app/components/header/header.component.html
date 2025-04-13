@@ -25,7 +25,7 @@
     </ul>
   </nav>
   <ng-container *ngIf="!isLogged(); else loggedInTemplate">
-    <button class="login-button" routerLink="/login" mat-flat-button>Bejelentkezés</button>
+    <button matTooltip="Jelentkezz be!" class="login-button" routerLink="/login" mat-flat-button>Bejelentkezés</button>
     <mat-icon [routerLink]="'/login'" class="account-icon">person</mat-icon>
   </ng-container>
 

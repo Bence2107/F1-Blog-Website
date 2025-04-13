@@ -28,6 +28,17 @@
     filled-focus-label-text-color: var(--red-text),
     filled-hover-label-text-color: var(--gray-text),
   ));
+
+  @include mat.snack-bar-overrides((
+    container-color: var(--secondary-background),
+    supporting-text-color: var(--primary-text),
+    supporting-text-size: 16px
+  ));
+
+  @include mat.tooltip-overrides((
+    container-color: var(--secondary-background),
+    supporting-text-color: var(--primary-text),
+  ));
 }
 
 .light-mode {

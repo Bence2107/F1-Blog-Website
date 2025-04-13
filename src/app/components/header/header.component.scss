@@ -60,7 +60,7 @@ header {
 /* Hover effects scoped to a and mat-icon */
 .nav_links li a:hover,
 .nav_links li:hover mat-icon {
-  color: #d10101;
+  color: #f8274f;
 }
 
 .nav_links li a:hover::after,
@@ -78,7 +78,7 @@ header {
   position: absolute;
   width: 100%;
   height: 2px;
-  background: linear-gradient(to right, #ff0000, #d10101);
+  background: linear-gradient(to right, #f8274f, #ec254b);
   bottom: -5px;
   left: 0;
   transform: scaleX(0);

@@ -5,6 +5,7 @@ import {MatButton, MatIconButton} from '@angular/material/button';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
 import {AuthService} from '../../pages/auth/auth_service';
+import {MatTooltip} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,7 @@ import {AuthService} from '../../pages/auth/auth_service';
     MatIconButton,
     MatIcon,
     RouterLinkActive,
+    MatTooltip,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
