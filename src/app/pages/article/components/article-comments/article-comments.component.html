@@ -20,7 +20,7 @@
       <div class="user-info">
         <img [src]="comment_item.profileImage" (error)="comment_item.profileImage = 'assets/img/profile_pictures/avatar.jpg'" class="profile-img" alt="{{ comment_item.userName }}"/>
         <h2>{{comment_item.userName}}</h2>
-        <button *ngIf="userData.id == comment_item.userid" class="delete-button" mat-flat-button >Törlés</button>
+        <button *ngIf="userData?.id == comment_item.userid" class="delete-button" mat-flat-button >Törlés</button>
       </div>
       <div class="content">
         <p>{{comment_item.content}}</p>
