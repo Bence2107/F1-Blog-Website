@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatFabButton} from '@angular/material/button';
+import {Component} from '@angular/core';
+import {MatFabButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {RouterLink} from '@angular/router';
 

@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
 import {BehaviorSubject, map, Observable} from 'rxjs';
 import {UserModel} from '../../models/user_model';
 import {users_list} from '../../constants/users';

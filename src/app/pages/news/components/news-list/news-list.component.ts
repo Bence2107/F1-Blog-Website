@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {news_list} from '../../../../constants/news';
 import {RouterLink} from '@angular/router';
 import {NgForOf} from '@angular/common';

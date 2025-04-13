@@ -1,8 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { BreakpointObserver } from '@angular/cdk/layout';
-import { NgIf } from '@angular/common';
-import  {MatButton, MatIconButton } from '@angular/material/button';
-import { RouterLink, RouterLinkActive} from '@angular/router';
+import {BreakpointObserver} from '@angular/cdk/layout';
+import {NgIf} from '@angular/common';
+import {MatButton, MatIconButton} from '@angular/material/button';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
 import {AuthService} from '../../pages/auth/auth_service';
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {review_article_list} from '../../../../constants/articles';
 import {RouterLink} from '@angular/router';
