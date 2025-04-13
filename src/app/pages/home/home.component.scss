@@ -62,4 +62,8 @@ app-primary-news-list{
   width: 50%;
   border-radius: 30px;
   margin: auto;
+
+  @media (max-width: 990px) {
+    width: 80%;
+  }
 }

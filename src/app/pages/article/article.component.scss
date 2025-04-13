@@ -86,7 +86,7 @@ p{
 
 .img-secondary {
   margin: auto;
-  max-width: 50%;
+  width: 50%;
   border-radius: 20px;
 }
 
@@ -104,6 +104,10 @@ app-article-comments {
 @media (max-width: 990px) {
   .img-primary {
     max-width: 100%;
+  }
+
+  .img-secondary {
+    width: 90%;
   }
 
   .first-section h1{
