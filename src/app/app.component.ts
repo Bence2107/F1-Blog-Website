@@ -31,7 +31,7 @@ import {NgIf} from '@angular/common';
 
 })
 export class AppComponent implements OnInit {
-  title: string = "F1-Blog-Website";
+  title: string = "f1-blog-website";
 
   loggedId : number | null = null;
 

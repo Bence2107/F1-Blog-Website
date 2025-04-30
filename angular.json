@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "F1-Blog-Website": {
+    "f1-blog-website": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "F1-Blog-Website:build:production"
+              "buildTarget": "f1-blog-website:build:production"
             },
             "development": {
-              "buildTarget": "F1-Blog-Website:build:development"
+              "buildTarget": "f1-blog-website:build:development"
             }
           },
           "defaultConfiguration": "development"
