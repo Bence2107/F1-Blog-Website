@@ -5,11 +5,12 @@ export const users_list : UserModel[] = [
     id: "ydaxAiNHh6SXXBLUXLMW9pj7P8h2",
     email: "szabobence003@gmail.com",
     username: "Bence2107",
-    avatarUrl: "ydaxAiNHh6SXXBLUXLMW9pj7P8h2.jpg"
+    avatarUrl: true
   },
   {
     id: "2",
     email: "hurajongok@gmail.com",
-    username: "szevaszVer"
+    username: "szevaszVer",
+    avatarUrl: false
   }
 ]
