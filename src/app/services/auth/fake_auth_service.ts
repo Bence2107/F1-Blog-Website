@@ -9,13 +9,13 @@ import {users_list} from '../../constants/users';
 })
 export class FakeAuthService {
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
-  private loggedIdSubject = new BehaviorSubject<number | null>(null);
+  private loggedIdSubject = new BehaviorSubject<string | null>(null);
 
   loggedId$ = this.loggedIdSubject.asObservable();
 
   constructor(private router: Router) {}
 
-  setLoggedInStatus(status: boolean, id: number | null): void {
+  setLoggedInStatus(status: boolean, id: string | null): void {
     this.isLoggedInSubject.next(status);
     this.loggedIdSubject.next(id);
   }
@@ -24,11 +24,11 @@ export class FakeAuthService {
     return this.isLoggedInSubject.value;
   }
 
-  getLoggedId(): number | null {
+  getLoggedId(): string | null {
     return this.loggedIdSubject.value;
   }
 
-  login(id: number | null): void {
+  login(id: string | null): void {
     this.setLoggedInStatus(true, id);
     this.router.navigate(['/home']);
   }

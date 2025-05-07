@@ -51,7 +51,6 @@ export class LoginComponent implements OnInit {
 
     this.auth.signIn(emailValue, passwordValue)
       .then(userCredential => {
-        console.log("Login Success: " + userCredential.user);
         return this.auth.getUserById(userCredential.user.uid);
       })
       .then(userData => {
