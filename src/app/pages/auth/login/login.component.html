@@ -1,20 +1,24 @@
 <main>
+
   <div class="login-form-container">
+    <div class="form-error-container" *ngIf="loginError">
+      <h2>{{loginError}}</h2>
+    </div>
     <div class="auth-login">
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
         <h2>Bejelentkezés</h2>
 
         <mat-form-field>
           <mat-label>Email</mat-label>
-          <input matInput formControlName="email" />
+          <input matInput type="email" [formControl]="email" />
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Jelszó</mat-label>
-          <input matInput type="password" formControlName="password" />
+          <input matInput type="password" [formControl]="password" />
         </mat-form-field>
 
-        <button (click)="login()" mat-flat-button color="primary" class="login-form-button" type="submit">Belépés</button>
+        <button  mat-flat-button color="primary" class="login-form-button" type="submit">Belépés</button>
 
         <p class="form-text">Még nem regisztráltál? Megteheted <a routerLink="/signup"> itt</a>.</p>
       </form>
