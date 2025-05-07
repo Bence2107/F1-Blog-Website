@@ -7,7 +7,7 @@ import {users_list} from '../../constants/users';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class FakeAuthService {
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   private loggedIdSubject = new BehaviorSubject<number | null>(null);
 

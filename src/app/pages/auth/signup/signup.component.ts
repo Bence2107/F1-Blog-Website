@@ -4,7 +4,7 @@ import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatButton} from '@angular/material/button';
 import {Router, RouterLink} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
-import {AuthService} from '../auth_service';
+import {FakeAuthService} from '../../../services/auth/fake_auth_service';
 import {CustomsnackbarComponent} from '../../../components/customsnackbar/customsnackbar.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
@@ -25,7 +25,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class SignupComponent implements OnInit {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private auth: AuthService, private snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private router: Router, private auth: FakeAuthService, private snackBar: MatSnackBar) {
     this.registerForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     username: ['', [Validators.required, Validators.minLength(3)]],
