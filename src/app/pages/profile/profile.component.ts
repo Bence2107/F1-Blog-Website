@@ -2,11 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {UsersCommentsComponent} from './components/users-comments/users-comments.component';
 import {Router} from '@angular/router';
 import {MatButton} from '@angular/material/button';
-import {AuthService} from '../auth/auth_service';
-import {UserModel} from '../../models/user_model';
 import {CustomsnackbarComponent} from '../../components/customsnackbar/customsnackbar.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {CapitalizeFirstPipe} from '../../pipes/capitalizefirstpipe.pipe';
+import {AuthService} from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -20,17 +19,20 @@ import {CapitalizeFirstPipe} from '../../pipes/capitalizefirstpipe.pipe';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent implements OnInit {
-  userData: UserModel | null = null;
+  userData: any
+  isLoggedIn: boolean = false;
 
   constructor(private auth: AuthService, private router: Router, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.auth.getLoggedInUser().subscribe(user => {
-      this.userData = user;
-
-      if (!this.userData || !this.auth.getLoggedInStatus()) {
-        this.router.navigate(["/login"]);
-      }
+    const userId = localStorage.getItem('userId');
+    if(userId) {
+      this.auth.getUserById(userId).then((user) => {
+        this.userData = user;
+      });
+    }
+    this.auth.isLoggedIn().subscribe(user => {
+      this.isLoggedIn = !!user;
     });
   }
 
@@ -44,7 +46,7 @@ export class ProfileComponent implements OnInit {
   }
 
   logout() {
-    this.auth.logout();
+    this.auth.signOut();
 
     this.snackBar.openFromComponent(CustomsnackbarComponent, {
       data: { message: 'Kijelentkezve', actionLabel: 'Rendben' },

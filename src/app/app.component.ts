@@ -6,7 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
-import {AuthService} from './pages/auth/auth_service';
+import {AuthService} from './services/auth/auth.service';
 import {NgIf} from '@angular/common';
 
 
@@ -34,18 +34,15 @@ export class AppComponent implements OnInit {
   title: string = "f1-blog-website";
 
   loggedId : number | null = null;
+  isLoggedIn: boolean = false;
 
-  constructor(private authService: AuthService) {
-    this.loggedId = this.authService.getLoggedId();
+  constructor(private auth: AuthService) {
   }
 
-  isloggedin(){
-    return this.authService.getLoggedInStatus();
-  }
 
   ngOnInit(){
-    this.authService.loggedId$.subscribe(id => {
-      this.loggedId = id;
+    this.auth.isLoggedIn().subscribe(user => {
+      this.isLoggedIn = !!user;
     });
   }
 }
