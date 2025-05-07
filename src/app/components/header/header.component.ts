@@ -4,8 +4,8 @@ import {NgIf} from '@angular/common';
 import {MatButton, MatIconButton} from '@angular/material/button';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
-import {AuthService} from '../../pages/auth/auth_service';
 import {MatTooltip} from '@angular/material/tooltip';
+import {AuthService} from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -23,12 +23,14 @@ import {MatTooltip} from '@angular/material/tooltip';
 })
 export class HeaderComponent implements OnInit {
   isDarkMode: boolean = true;
+  loggedId: any;
   userData: any;
+  isloggedIn: boolean = false;
 
   @Output() toggleSidenav = new EventEmitter<void>();
   isScreenSmall: boolean = false;
 
-  constructor(private auth: AuthService,private breakpointObserver: BreakpointObserver) {
+  constructor(private auth: AuthService, private breakpointObserver: BreakpointObserver) {
     this.breakpointObserver.observe(['(max-width: 990px)']).subscribe(result => {
       this.isScreenSmall = result.matches;
     });
@@ -38,9 +40,19 @@ export class HeaderComponent implements OnInit {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     this.isDarkMode = savedTheme === 'dark';
     this.setTheme(savedTheme);
-    this.auth.getLoggedInUser().subscribe(user => {
-      this.userData = user;
+
+    this.auth.isLoggedIn().subscribe(user => {
+      this.isloggedIn = !!user;
     });
+
+    const userId = localStorage.getItem('userId');
+    if(userId) {
+      this.auth.getUserById(userId).then((user) => {
+        this.userData = user;
+        this.loggedId = this.userData.id;
+      });
+    }
+
   }
 
   loadAvatar(): string {
@@ -50,10 +62,6 @@ export class HeaderComponent implements OnInit {
     else{
       return `assets/img/profile_pictures/avatar.jpg`;
     }
-  }
-
-  isLogged(): boolean {
-    return this.auth.getLoggedInStatus();
   }
 
   toggleTheme() {

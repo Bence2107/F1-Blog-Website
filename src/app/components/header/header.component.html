@@ -24,13 +24,13 @@
       </li>
     </ul>
   </nav>
-  <ng-container *ngIf="!isLogged(); else loggedInTemplate">
+  <ng-container *ngIf="!isloggedIn; else loggedInTemplate">
     <button matTooltip="Jelentkezz be!" class="login-button" routerLink="/login" mat-flat-button>Bejelentkezés</button>
     <mat-icon [routerLink]="'/login'" class="account-icon">person</mat-icon>
   </ng-container>
 
   <ng-template #loggedInTemplate>
-    <div class="avatar" [routerLink]="['/profile', userData.id]">
+    <div class="avatar" [routerLink]="['/profile', loggedId]">
       <img [src]="loadAvatar()" alt="User Profile" class="profile-img">
     </div>
   </ng-template>
