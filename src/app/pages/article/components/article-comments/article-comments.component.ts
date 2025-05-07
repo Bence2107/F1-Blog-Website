@@ -4,7 +4,7 @@ import {comments_list} from '../../../../constants/comments_list';
 import {CommentModel} from '../../../../models/comment_model';
 import {users_list} from '../../../../constants/users';
 import {MatButton} from '@angular/material/button';
-import {AuthService} from '../../../auth/auth_service';
+import {FakeAuthService} from '../../../../services/auth/fake_auth_service';
 import {MatFormField, MatInput} from '@angular/material/input';
 
 @Component({
@@ -24,7 +24,7 @@ export class ArticleCommentsComponent implements OnInit {
   userData: any;
   comments: (CommentModel & { userName: string, profileImage: any })[] = [];
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: FakeAuthService) {}
 
   ngOnInit() {
     this.comments = comments_list
