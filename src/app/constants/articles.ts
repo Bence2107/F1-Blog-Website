@@ -2,7 +2,7 @@ import {ArticleModel} from '../models/article_model';
 
 export const news_article_list: ArticleModel[] = [
   {
-    id: 1,
+    id: "1",
     url: "japan-versenyzo-japan-festes",
     title: "Fehérbe borul a Red Bull",
     summary: "Japán versenyző, japán festés",
@@ -19,7 +19,7 @@ export const news_article_list: ArticleModel[] = [
     isReview: false
   },
   {
-    id: 2,
+    id: "2",
     url: "ferrari-25-attores",
     title: "Áttörést találhatott a Ferrari",
     summary: "20 különböző szimulátor tapasztalat után visszatérhetnek a Pirosak?",
@@ -33,7 +33,7 @@ export const news_article_list: ArticleModel[] = [
     isReview: false
   },
   {
-    id: 3,
+    id: "3",
     url: "lawson-red-bull-sokk",
     title: "Lawsont sokként érte a Red Bull döntése",
     summary: "Tsunoda adott esetben legyőzheti Verstappent",
@@ -47,7 +47,7 @@ export const news_article_list: ArticleModel[] = [
     isReview: false
   },
   {
-    id: 4,
+    id: "4",
     url: "verstappen-nyert-japan-festesben",
     title: "Verstappen nyerte a 2025-ös Japán nagydíjat",
     summary: "Szerencsét hozott a fehér festés",
@@ -65,7 +65,7 @@ export const news_article_list: ArticleModel[] = [
 
 export const review_article_list: ArticleModel[] = [
   {
-    id: 1,
+    id: "1",
     url: "2025-japan-nagydij-osszefoglalo",
     title: "A felkelő nap országában sokan visszaaludtak - 2025. Japán Nagydíj",
     summary: "Visszafogott volt virágzáskor a száguldó cirkusz ",

@@ -1,5 +1,5 @@
 export interface NewsListModel {
-  id: number;
+  id: string;
   url: string;
   label: string;
   summary: string;
