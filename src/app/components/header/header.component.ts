@@ -6,6 +6,8 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
 import {MatTooltip} from '@angular/material/tooltip';
 import {AuthService} from '../../services/auth/auth.service';
+import {UserService} from '../../services/user/user.service';
+import {UserModel} from '../../models/user_model';
 
 @Component({
   selector: 'app-header',
@@ -24,13 +26,13 @@ import {AuthService} from '../../services/auth/auth.service';
 export class HeaderComponent implements OnInit {
   isDarkMode: boolean = true;
   loggedId: any;
-  userData: any;
+  userData: UserModel | null = null;
   isloggedIn: boolean = false;
 
   @Output() toggleSidenav = new EventEmitter<void>();
   isScreenSmall: boolean = false;
 
-  constructor(private auth: AuthService, private breakpointObserver: BreakpointObserver) {
+  constructor(private auth: AuthService, private usersService: UserService, private breakpointObserver: BreakpointObserver) {
     this.breakpointObserver.observe(['(max-width: 990px)']).subscribe(result => {
       this.isScreenSmall = result.matches;
     });
@@ -47,9 +49,8 @@ export class HeaderComponent implements OnInit {
 
     const userId = localStorage.getItem('userId');
     if(userId) {
-      this.auth.getUserById(userId).then((user) => {
+      this.usersService.getUserById(userId).then((user) => {
         this.userData = user;
-        this.loggedId = this.userData.id;
       });
     }
 

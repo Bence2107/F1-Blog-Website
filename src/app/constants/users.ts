@@ -8,7 +8,7 @@ export const users_list : UserModel[] = [
     avatarUrl: true
   },
   {
-    id: "2",
+    id: "H15GlU0wIRP3aDe6c5T0tjOorzw1",
     email: "hurajongok@gmail.com",
     username: "szevaszVer",
     avatarUrl: false

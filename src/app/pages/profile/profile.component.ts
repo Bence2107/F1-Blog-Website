@@ -6,6 +6,8 @@ import {CustomsnackbarComponent} from '../../components/customsnackbar/customsna
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {CapitalizeFirstPipe} from '../../pipes/capitalizefirstpipe.pipe';
 import {AuthService} from '../../services/auth/auth.service';
+import {UserService} from '../../services/user/user.service';
+import {UserModel} from '../../models/user_model';
 
 @Component({
   selector: 'app-profile',
@@ -19,15 +21,15 @@ import {AuthService} from '../../services/auth/auth.service';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent implements OnInit {
-  userData: any
+  userData: UserModel | null = null
   isLoggedIn: boolean = false;
 
-  constructor(private auth: AuthService, private router: Router, private snackBar: MatSnackBar) {}
+  constructor(private auth: AuthService, private userService: UserService, private router: Router, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     const userId = localStorage.getItem('userId');
     if(userId) {
-      this.auth.getUserById(userId).then((user) => {
+      this.userService.getUserById(userId).then((user) => {
         this.userData = user;
       });
     }

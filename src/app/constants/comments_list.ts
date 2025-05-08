@@ -11,7 +11,7 @@ export const comments_list : CommentModel[] = [
   {
     id: "2",
     articleUrl: "verstappen-nyert-japan-festesben",
-    userid: "2",
+    userid: "dBUt8AiM00bzNA3CvNprKFSUXb33",
     content: "Verstappen szépen csinálta és osztotta be a gumijait",
     timestamp: "2025.04.04."
   },
