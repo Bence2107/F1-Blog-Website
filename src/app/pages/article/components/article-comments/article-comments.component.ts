@@ -9,7 +9,8 @@ import {MatFormField, MatInput} from '@angular/material/input';
 import {AuthService} from '../../../../services/auth/auth.service';
 import {UserService} from '../../../../services/user/user.service';
 import {UserModel} from '../../../../models/user_model';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {CommentService} from '../../../../services/comments/comment.service';
 
 @Component({
   selector: 'app-article-comments',
@@ -27,12 +28,23 @@ import {BehaviorSubject} from 'rxjs';
 export class ArticleCommentsComponent implements OnInit {
   @Input() articleUrl!: string;
   userData: any;
-  comments: (CommentModel & {profileImage: any })[] = [];
+  users: UserModel[] | undefined;
+  comments: any[] = [];
   isLoggedIn = new BehaviorSubject<boolean>(true);
 
-  constructor(private auth: AuthService, private usersService: UserService, private cdr: ChangeDetectorRef) {}
+  constructor(private auth: AuthService, private usersService: UserService, private commentService: CommentService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
+    this.commentService.getComments().subscribe(comments => {
+      this.comments = comments;
+      this.refreshComments();
+      this.cdr.detectChanges();
+
+    })
+    this.usersService.getAllUsers().subscribe((users: UserModel[]) => {
+      this.users = users;
+    })
+
     this.auth.isLoggedIn().subscribe(user => {
       this.isLoggedIn.next(!!user);
       if (user) {
@@ -43,7 +55,6 @@ export class ArticleCommentsComponent implements OnInit {
 
       this.cdr.detectChanges();
     });
-    this.refreshComments();
   }
 
 
@@ -64,17 +75,22 @@ export class ArticleCommentsComponent implements OnInit {
     return this.comments.length !== 0;
   }
 
-  refreshComments(): void {
-    this.comments = comments_list
+  async refreshComments(): Promise<void> {
+    if(!this.comments) return;
+
+    this.comments = await Promise.all(
+      this.comments
       .filter(c => c.articleUrl === this.articleUrl)
-      .map(c => {
-        const user = users_list.find(u => u.id === c.userId);
-        return {
-          ...c,
-          userName: user?.username || 'Ismeretlen felhasználó',
-          profileImage: this.loadCommentAvatar(user)
-        };
-      }) || [];
+      .map(async c =>{
+            const user = await this.usersService.getUserById(c.userId);
+            return {
+              ...c,
+              profileImage: user?.avatarUrl ? `assets/img/profile_pictures/${user.id}.jpg` : 'assets/img/profile_pictures/avatar.jpg'
+            }
+        }
+      )
+    );
+
   }
 
   loadAvatar(): string {
@@ -85,13 +101,4 @@ export class ArticleCommentsComponent implements OnInit {
       return `assets/img/profile_pictures/avatar.jpg`;
     }
   }
-
-  loadCommentAvatar(user: UserModel | undefined): string {
-    if(user != null && user.avatarUrl) {
-      return `assets/img/profile_pictures/${user.id}.jpg`;
-    }
-    else{
-      return `assets/img/profile_pictures/avatar.jpg`;
-    }
-}
 }
