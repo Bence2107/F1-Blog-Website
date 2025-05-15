@@ -28,7 +28,6 @@ import {CommentService} from '../../../../services/comments/comment.service';
 export class ArticleCommentsComponent implements OnInit {
   @Input() articleUrl!: string;
   userData: any;
-  users: UserModel[] | undefined;
   comments: any[] = [];
   isLoggedIn = new BehaviorSubject<boolean>(true);
 
@@ -40,10 +39,7 @@ export class ArticleCommentsComponent implements OnInit {
       this.refreshComments();
       this.cdr.detectChanges();
 
-    })
-    this.usersService.getAllUsers().subscribe((users: UserModel[]) => {
-      this.users = users;
-    })
+    });
 
     this.auth.isLoggedIn().subscribe(user => {
       this.isLoggedIn.next(!!user);
@@ -90,7 +86,6 @@ export class ArticleCommentsComponent implements OnInit {
         }
       )
     );
-
   }
 
   loadAvatar(): string {
