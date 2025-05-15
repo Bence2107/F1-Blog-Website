@@ -24,14 +24,14 @@
       </li>
     </ul>
   </nav>
-  <ng-container *ngIf="!isloggedIn; else loggedInTemplate">
+  <ng-container *ngIf="!isLoggedIn; else loggedInTemplate">
     <button matTooltip="Jelentkezz be!" class="login-button" routerLink="/login" mat-flat-button>Bejelentkezés</button>
     <mat-icon [routerLink]="'/login'" class="account-icon">person</mat-icon>
   </ng-container>
 
   <ng-template #loggedInTemplate>
     <div class="avatar" [routerLink]="['/profile', loggedId]">
-      <img [src]="loadAvatar()" alt="User Profile" class="profile-img">
+      <img [src]="avatarUrl | async" alt="User Profile" class="profile-img">
     </div>
   </ng-template>
   <img (click)="toggleTheme()"  [src]="'/assets/img/header/dark-light-mode-icon.png'" alt="" class="dark-light-switch-button">

@@ -5,6 +5,10 @@ main{
   @include auth_styles.form_main;
 }
 
+.form-error-container {
+  @include auth_styles.form-error-container;
+}
+
 .signup-form-container{
   @include auth_styles.form_container;
 }

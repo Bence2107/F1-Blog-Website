@@ -1,8 +1,11 @@
 <main>
   <div class="signup-form-container">
+    <div class="form-error-container" *ngIf="(signupError| async) !== ''">
+      <h2>{{signupError | async}}</h2>
+    </div>
     <div class="auth-signup">
       <mat-icon routerLink="/login" class="back-button" fontIcon="arrow_back"></mat-icon>
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="registerForm" (ngSubmit)="signup()">
         <h2>Regisztráció</h2>
 
         <mat-form-field>

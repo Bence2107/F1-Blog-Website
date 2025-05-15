@@ -43,6 +43,12 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     this.auth.isLoggedIn().subscribe(user => {
       this.isLoggedIn = !!user;
+
+      if(!user){
+        localStorage.setItem('isLoggedIn', 'false');
+        localStorage.removeItem('userId');
+      }
     });
+
   }
 }

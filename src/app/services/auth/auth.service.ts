@@ -5,11 +5,12 @@ import {
   signOut,
   authState,
   User,
-  UserCredential
+  UserCredential, createUserWithEmailAndPassword
 } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import {Router} from '@angular/router';
-import {doc, Firestore, getDoc} from '@angular/fire/firestore';
+import {collection, doc, Firestore, getDoc, setDoc} from '@angular/fire/firestore';
+import {UserModel} from '../../models/user_model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +19,7 @@ export class AuthService {
   currentUser: Observable<User | null>;
 
   constructor(
-    private auth: Auth,
-    private firestore: Firestore,
-    private router: Router) {
+    private auth: Auth, private firestore: Firestore, private router: Router) {
     this.currentUser = authState(this.auth);
   }
 
@@ -29,13 +28,41 @@ export class AuthService {
   }
 
   signOut() : Promise <void> {
-    localStorage.setItem('isLoggedIn', 'false');
     return signOut(this.auth).then(() => {
+      localStorage.setItem('isLoggedIn', 'false');
+      localStorage.removeItem('userId');
+      this.currentUser = new Observable(observer => {observer.next(null)});
       this.router.navigate(['/home']);
     });
   }
 
-  isLoggedIn (): Observable<User | null> {
+  async signUp(email: string, password: string, userData: Partial<UserModel>): Promise<UserCredential> {
+    try {
+      const userCredentical = await createUserWithEmailAndPassword(
+        this.auth,
+        email,
+        password,
+      );
+
+      await this.createUserData(userCredentical.user.uid, {
+        ...userData,
+        id: userCredentical.user.uid,
+        email: email,
+        username: userData.username,
+        avatarUrl: userData.avatarUrl,
+      });
+      localStorage.setItem('userId', userCredentical.user.uid);
+      return userCredentical;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  private async createUserData(userId: string, userData: Partial<UserModel>): Promise<void> {
+    return await setDoc(doc(collection(this.firestore, 'Users'), userId), userData);
+  }
+
+  isLoggedIn(): Observable<User | null> {
     return this.currentUser;
   }
 

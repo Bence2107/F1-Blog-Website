@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
   loginForm: FormGroup;
-  loginError$ = new BehaviorSubject<string>("");
+  loginError = new BehaviorSubject<string>("");
   userData: any;
 
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private snackBar: MatSnackBar, private cdRef: ChangeDetectorRef) {
@@ -39,12 +39,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     if(this.email.invalid) {
-      this.loginError$.next( "Kérem, helyes Email-t adjon meg!");
+      this.loginError.next( "Kérem, helyes Email-t adjon meg!");
       return;
     }
 
     if (this.password.invalid) {
-      this.loginError$.next("A jelszó 6 karakter");
+      this.loginError.next("A jelszó 6 karakter");
       return;
     }
 
@@ -57,28 +57,28 @@ export class LoginComponent implements OnInit {
       })
       .then(userData => {
         this.auth.updateLogInStatus(true);
-        this.router.navigate(['/home']);
         localStorage.setItem("userId", userData.id);
+
+        this.router.navigate(['/home']);
         this.snackBar.openFromComponent(CustomsnackbarComponent, {
           data: { message: 'Sikeres Bejelentkezés', actionLabel: 'Rendben' },
           duration: 3000,
           horizontalPosition: 'center',
         });
-        this.cdRef.detectChanges();
       })
       .catch(error => {
         switch (error.code) {
           case 'auth/too-many-requests':
-            this.loginError$.next('Túl sok kérés! Próbálkozzon később!');
+            this.loginError.next('Túl sok kérés! Próbálkozzon később!');
             break;
           case 'auth/user-not-found':
-            this.loginError$.next('Nincs ilyen felhasználó');
+            this.loginError.next('Nincs ilyen felhasználó');
             break;
           case 'auth/invalid-credential':
-            this.loginError$.next('Helytelen Email vagy jelszó!');
+            this.loginError.next('Helytelen Email vagy jelszó!');
             break;
           default:
-            this.loginError$.next("Hiba történt, kérem próbálja újra!");
+            this.loginError.next("Hiba történt, kérem próbálja újra!");
         }
 
         return new Promise(() => {});
@@ -91,9 +91,6 @@ export class LoginComponent implements OnInit {
       this.auth.getUserById(userId).then((user) => {
         this.userData = user;
       });
-    }
-    if (this.userData || this.auth.isLoggedIn()) {
-      this.router.navigate(["/login"]);
     }
   }
 }

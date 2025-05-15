@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {UsersCommentsComponent} from './components/users-comments/users-comments.component';
 import {Router} from '@angular/router';
 import {MatButton} from '@angular/material/button';
@@ -8,6 +8,8 @@ import {CapitalizeFirstPipe} from '../../pipes/capitalizefirstpipe.pipe';
 import {AuthService} from '../../services/auth/auth.service';
 import {UserService} from '../../services/user/user.service';
 import {UserModel} from '../../models/user_model';
+import {BehaviorSubject} from 'rxjs';
+import {AsyncPipe} from '@angular/common';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +17,8 @@ import {UserModel} from '../../models/user_model';
   imports: [
     UsersCommentsComponent,
     MatButton,
-    CapitalizeFirstPipe
+    CapitalizeFirstPipe,
+    AsyncPipe
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
@@ -23,33 +26,39 @@ import {UserModel} from '../../models/user_model';
 export class ProfileComponent implements OnInit {
   userData: UserModel | null = null
   isLoggedIn: boolean = false;
+  loggedId: any;
+  avatarUrl = new BehaviorSubject(<string>"");
 
-  constructor(private auth: AuthService, private userService: UserService, private router: Router, private snackBar: MatSnackBar) {}
+  constructor(private auth: AuthService, private userService: UserService,private cdr: ChangeDetectorRef, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     const userId = localStorage.getItem('userId');
     if(userId) {
       this.userService.getUserById(userId).then((user) => {
         this.userData = user;
+        this.loggedId = this.userData?.id;
+        this.loadAvatar();
+        this.cdr.detectChanges();
       });
     }
+
     this.auth.isLoggedIn().subscribe(user => {
       this.isLoggedIn = !!user;
     });
   }
 
-  loadAvatar(): string {
+  loadAvatar(): void {
     if(this.userData && this.userData.avatarUrl) {
-      return `assets/img/profile_pictures/${this.userData.id}.jpg`;
+      this.avatarUrl.next(`assets/img/profile_pictures/${this.loggedId}.jpg`);
     }
     else{
-      return `assets/img/profile_pictures/avatar.jpg`;
+      this.avatarUrl.next(`assets/img/profile_pictures/avatar.jpg`);
     }
   }
 
   logout() {
     this.auth.signOut();
-
+    this.auth.updateLogInStatus(false);
     this.snackBar.openFromComponent(CustomsnackbarComponent, {
       data: { message: 'Kijelentkezve', actionLabel: 'Rendben' },
       duration: 3000,

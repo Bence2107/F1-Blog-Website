@@ -2,7 +2,7 @@
   <div class="profile_container">
     <h1>Adatok</h1>
     <div class="profile-info">
-      <img [src]="loadAvatar()" alt="">
+      <img [src]="avatarUrl | async" alt="">
       <div class="profile-data">
         <div class="info">
           <h2>Felhasználónév:</h2>

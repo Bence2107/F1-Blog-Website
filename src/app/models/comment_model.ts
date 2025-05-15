@@ -1,7 +1,7 @@
 export interface CommentModel {
   id: string;
   articleUrl: string;
-  userid: string;
+  username: string;
   content: string;
   timestamp: string;
 }

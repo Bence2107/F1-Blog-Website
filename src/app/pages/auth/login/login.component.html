@@ -1,8 +1,8 @@
 <main>
 
   <div class="login-form-container">
-    <div class="form-error-container" *ngIf="(loginError$ | async) !== ''">
-      <h2>{{loginError$ | async}}</h2>
+    <div class="form-error-container" *ngIf="(loginError | async) !== ''">
+      <h2>{{loginError | async}}</h2>
     </div>
     <div class="auth-login">
       <form [formGroup]="loginForm" (ngSubmit)="login()">
