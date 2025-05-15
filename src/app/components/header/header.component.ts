@@ -64,16 +64,6 @@ export class HeaderComponent implements OnInit {
     this.setTheme(savedTheme);
   }
 
-  private checkUserStatus(): void {
-    this.auth.isLoggedIn().subscribe(user => {
-      this.isLoggedIn = !!user;
-      if (user) {
-        this.loadUserData(user.uid);
-      } else {
-        this.resetUserData();
-      }
-    });
-  }
 
   private loadUserData(userId: string): void {
     this.usersService.getUserById(userId).then((user) => {
