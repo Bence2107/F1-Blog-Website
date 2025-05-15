@@ -43,6 +43,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeTheme();
+    this.isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn") || "false");
     const userId = localStorage.getItem('userId');
     if (userId) {
       this.loadUserData(userId);

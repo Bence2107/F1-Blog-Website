@@ -33,21 +33,16 @@ import {NgIf} from '@angular/common';
 export class AppComponent implements OnInit {
   title: string = "f1-blog-website";
 
-  loggedId : number | null = null;
+  loggedId : string | undefined = undefined;
   isLoggedIn: boolean = false;
 
-  constructor(private auth: AuthService) {
-  }
+  constructor(private auth: AuthService) {}
 
 
   ngOnInit(){
     this.auth.isLoggedIn().subscribe(user => {
       this.isLoggedIn = !!user;
-
-      if(!user){
-        localStorage.setItem('isLoggedIn', 'false');
-        localStorage.removeItem('userId');
-      }
+      this.loggedId = user?.uid;
     });
 
   }

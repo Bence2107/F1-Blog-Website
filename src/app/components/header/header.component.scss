@@ -28,12 +28,20 @@ header {
   z-index: 1000;
 }
 
+.account-icon {
+  cursor: pointer;
+  font-size: 36px;
+  width: 36px;
+  height: 36px;
+  color: black;
+}
+
 .login-button {
   cursor: pointer;
   display: inline-flex;
 }
 
-.account-icon {
+.login-icon {
   display: none;
   color: black;
 }
@@ -108,12 +116,7 @@ header {
   transform: scale(1.2);
 }
 
-.avatar img {
-  cursor: pointer;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-}
+
 
 @media (min-width: 991px) and (max-width: 1350px) {
   .logo {
@@ -125,14 +128,14 @@ header {
     display: none;
   }
 
-  .account-icon {
+  .login-icon {
     cursor: pointer;
     display: flex;
     margin-right: 2%;
     transition: 0.2s;
   }
 
-  .account-icon:hover {
+  .login-icon:hover {
     scale: 1.2;
   }
 
@@ -170,7 +173,7 @@ header {
     display: none;
   }
 
-  .avatar {
+  .account-icon{
     display: none;
   }
 }

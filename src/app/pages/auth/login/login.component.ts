@@ -57,9 +57,12 @@ export class LoginComponent implements OnInit {
       })
       .then(userData => {
         this.auth.updateLogInStatus(true);
+        localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userId", userData.id);
 
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home']).then(() => {
+          window.location.reload();
+        });
         this.snackBar.openFromComponent(CustomsnackbarComponent, {
           data: { message: 'Sikeres Bejelentkezés', actionLabel: 'Rendben' },
           duration: 3000,

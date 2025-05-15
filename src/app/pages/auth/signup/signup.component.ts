@@ -65,7 +65,10 @@ export class SignupComponent implements OnInit {
 
       this.auth.signUp(email, pw, userData)
         .then(() => {
-          this.router.navigate(['/home']);
+          this.auth.updateLogInStatus(true);
+          this.router.navigate(['/home']).then(() => {
+            window.location.reload();
+          });
           this.snackBar.openFromComponent(CustomsnackbarComponent, {
             data: { message: 'Sikeres Regisztráció!', actionLabel: 'Rendben' },
             duration: 3000,

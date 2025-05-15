@@ -19,20 +19,18 @@
         <mat-icon>newspaper</mat-icon>
       </li>
       <li routerLinkActive="activeLink" [routerLink]="'reviews'">
-        <a  routerLinkActive="activeLink">Összefoglalók</a>
+        <a routerLinkActive="activeLink">Összefoglalók</a>
         <mat-icon>rate_review</mat-icon>
       </li>
     </ul>
   </nav>
   <ng-container *ngIf="!isLoggedIn; else loggedInTemplate">
     <button matTooltip="Jelentkezz be!" class="login-button" routerLink="/login" mat-flat-button>Bejelentkezés</button>
-    <mat-icon [routerLink]="'/login'" class="account-icon">person</mat-icon>
+    <mat-icon [routerLink]="'/login'" class="login-icon">login</mat-icon>
   </ng-container>
 
   <ng-template #loggedInTemplate>
-    <div class="avatar" [routerLink]="['/profile', loggedId]">
-      <img [src]="avatarUrl | async" alt="User Profile" class="profile-img">
-    </div>
+      <mat-icon routerLinkActive="activeLink" [routerLink]="['/profile', loggedId]" class="account-icon">person</mat-icon>
   </ng-template>
   <img (click)="toggleTheme()"  [src]="'/assets/img/header/dark-light-mode-icon.png'" alt="" class="dark-light-switch-button">
 </header>

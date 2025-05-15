@@ -37,6 +37,8 @@ mat-sidenav-container {
 .sidebar ul {
   list-style: none;
   padding: 5px 5%;
+  color: #000000;
+
 }
 
 .sidebar ul li {
@@ -48,4 +50,9 @@ mat-sidenav-container {
   font-family: 'Kanit', cursive;
   font-size: 24px;
   color: black;
+}
+
+.activeLink {
+  color: #f8274f !important;
+  font-weight: bold;
 }

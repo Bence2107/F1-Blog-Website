@@ -4,11 +4,26 @@
       <p>Menü</p>
     </div>
     <ul>
-      <li><a routerLink="/home" routerLinkActive="activeLink" (click)="sidenav.close()">Főoldal</a></li>
-      <li><a routerLink="/news" routerLinkActive="activeLink" (click)="sidenav.close()">Hírek</a></li>
-      <li><a routerLink="/reviews" routerLinkActive="activeLink" (click)="sidenav.close()">Összefoglalók</a></li>
-      <li *ngIf="!isLoggedIn"><a routerLink="/login" routerLinkActive="activeLink" (click)="sidenav.close()">Bejelentkezés</a></li>
-      <li *ngIf="isLoggedIn"><a [routerLink]="['/profile', loggedId]" routerLinkActive="activeLink" (click)="sidenav.close()">Profil</a></li>
+      <li [routerLink]="'home'" routerLinkActive="activeLink">
+        <a routerLinkActive="activeLink" (click)="sidenav.close()">Főoldal</a>
+        <mat-icon>home</mat-icon>
+      </li>
+      <li [routerLink]="'news'" routerLinkActive="activeLink">
+        <a routerLinkActive="activeLink" (click)="sidenav.close()">Hírek</a>
+        <mat-icon>newspaper</mat-icon>
+      </li>
+      <li [routerLink]="'reviews'" routerLinkActive="activeLink">
+        <a routerLinkActive="activeLink" (click)="sidenav.close()">Összefoglalók</a>
+        <mat-icon>rate_review</mat-icon>
+      </li>
+      <li [routerLink]="'login'" *ngIf="!isLoggedIn">
+        <a routerLinkActive="activeLink" (click)="sidenav.close()">Bejelentkezés</a>
+        <mat-icon>login</mat-icon>
+      </li>
+      <li [routerLink]="['/profile', loggedId]" *ngIf="isLoggedIn">
+        <a routerLinkActive="activeLink" (click)="sidenav.close()">Profil</a>
+        <mat-icon>person</mat-icon>
+      </li>
     </ul>
   </mat-sidenav>
   <mat-sidenav-content>
