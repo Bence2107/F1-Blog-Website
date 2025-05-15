@@ -3,7 +3,7 @@
 
   <div class="comments" *ngIf="loadComments()">
 
-    <div class="new-comment-item" *ngIf="isLoggedIn()">
+    <div class="new-comment-item" *ngIf="isLoggedIn | async">
       <img [src]="loadAvatar()" alt="Profile" class="profile-img">
       <form class="new-comment-form">
       <mat-form-field style="width:60vw" color="primary">
@@ -12,15 +12,15 @@
         <button mat-flat-button color="primary" type="submit">Komment</button>
       </form>
     </div>
-    <div class="new-comment-item-none" *ngIf="!isLoggedIn()">
+    <div class="new-comment-item-none" *ngIf="!(isLoggedIn | async)">
         <p>Hozzászóláshoz jelentkezz be!</p>
     </div>
 
     <div class="comment-item" *ngFor="let comment_item of comments">
       <div class="user-info">
-        <img [src]="comment_item.profileImage" (error)="comment_item.profileImage = 'assets/img/profile_pictures/avatar.jpg'" class="profile-img" alt="{{ comment_item.userName }}"/>
-        <h2>{{comment_item.userName}}</h2>
-        <button *ngIf="userData?.id == comment_item.username" class="delete-button" mat-flat-button >Törlés</button>
+        <img [src]="comment_item.profileImage" (error)="comment_item.profileImage = 'assets/img/profile_pictures/avatar.jpg'" class="profile-img" alt="{{ comment_item.username }}"/>
+        <h2>{{comment_item.username}}</h2>
+        <button *ngIf="userData?.username == comment_item.username" class="delete-button" mat-flat-button >Törlés</button>
       </div>
       <div class="content">
         <p>{{comment_item.content}}</p>
@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="comments" *ngIf="!loadComments()">
-      <div class="new-comment-item" *ngIf="isLoggedIn()">
+      <div class="new-comment-item" *ngIf="isLoggedIn">
         <img [src]="loadAvatar()" alt="Profile" class="profile-img">
         <form class="new-comment-form">
           <mat-form-field style="width:60vw" color="primary">
@@ -38,7 +38,7 @@
           <button mat-flat-button color="primary" type="submit">Komment</button>
         </form>
       </div>
-      <div class="new-comment-item-none" *ngIf="!isLoggedIn()">
+      <div class="new-comment-item-none" *ngIf="!isLoggedIn">
         <p>Hozzászóláshoz jelentkezz be!</p>
       </div>
       <p>Ehhez a poszthoz még nem szóltak hozzá! Légy te az első!</p>
