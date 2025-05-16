@@ -1,6 +1,5 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {UsersCommentsComponent} from './components/users-comments/users-comments.component';
-import {Router} from '@angular/router';
 import {MatButton} from '@angular/material/button';
 import {CustomsnackbarComponent} from '../../components/customsnackbar/customsnackbar.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -10,6 +9,7 @@ import {UserService} from '../../services/user/user.service';
 import {UserModel} from '../../models/user_model';
 import {BehaviorSubject} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-profile',
@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
   loggedId: any;
   avatarUrl = new BehaviorSubject(<string>"");
 
-  constructor(private auth: AuthService, private userService: UserService,private cdr: ChangeDetectorRef, private snackBar: MatSnackBar) {}
+  constructor(private app: AppComponent, private auth: AuthService, private userService: UserService,private cdr: ChangeDetectorRef, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     const userId = localStorage.getItem('userId');
@@ -55,6 +55,8 @@ export class ProfileComponent implements OnInit {
       this.avatarUrl.next(`assets/img/profile_pictures/avatar.jpg`);
     }
   }
+
+
 
   logout() {
     this.auth.signOut();

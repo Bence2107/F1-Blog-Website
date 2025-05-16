@@ -20,7 +20,6 @@ import {BehaviorSubject} from 'rxjs';
     MatIcon,
     RouterLinkActive,
     MatTooltip,
-    AsyncPipe,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
@@ -64,8 +63,6 @@ export class HeaderComponent implements OnInit {
     this.isDarkMode = savedTheme === 'dark';
     this.setTheme(savedTheme);
   }
-
-
   private loadUserData(userId: string): void {
     this.usersService.getUserById(userId).then((user) => {
       if (user) {
