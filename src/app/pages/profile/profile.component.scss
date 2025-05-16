@@ -57,3 +57,18 @@ main {
 app-users-comments {
   display: flex;
 }
+
+.loading-container {
+  width: 100%;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+mat-progress-bar {
+  width: 80%;
+  height: 10px;
+}

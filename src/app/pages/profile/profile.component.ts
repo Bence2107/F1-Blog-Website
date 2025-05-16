@@ -8,8 +8,9 @@ import {AuthService} from '../../services/auth/auth.service';
 import {UserService} from '../../services/user/user.service';
 import {UserModel} from '../../models/user_model';
 import {BehaviorSubject} from 'rxjs';
-import {AsyncPipe} from '@angular/common';
+import {AsyncPipe, NgIf} from '@angular/common';
 import {AppComponent} from '../../app.component';
+import {MatProgressBar} from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +19,9 @@ import {AppComponent} from '../../app.component';
     UsersCommentsComponent,
     MatButton,
     CapitalizeFirstPipe,
-    AsyncPipe
+    AsyncPipe,
+    NgIf,
+    MatProgressBar
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'

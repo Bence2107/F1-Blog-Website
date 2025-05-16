@@ -22,6 +22,12 @@
     outlined-ripple-color: rgba(165, 0, 0, 0.2),
   ));
 
+  @include mat.progress-bar-overrides((
+    active-indicator-color: #f8274f,
+    track-color: black,
+    track-height: 8px
+  ));
+
   @include mat.form-field-overrides((
     filled-container-color: var(--secondary-background),
     filled-label-text-color: var(--gray-text),

@@ -1,5 +1,5 @@
 <main>
-  <div class="article-contatiner" *ngIf="article">
+  <div class="article-contatiner" *ngIf="article; else loadingTemplate">
     <div *ngIf="!article.isReview">
       <mat-icon routerLink="/news" class="back-button">arrow_back</mat-icon>
       <button *ngIf="article.reviewUrl" mat-flat-button class="review-button" [routerLink]="['/article', article.reviewUrl]">Összefoglaló a nagydíjról</button>
@@ -44,5 +44,13 @@
       <button mat-flat-button class="review-button" routerLink="/news">Híreink</button>
     </div>
   </div>
-  <app-article-comments [articleUrl]="article.url"/>
+
+  <ng-template #loadingTemplate>
+    <div class="loading-container">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <h3>Betöltés...</h3>
+    </div>
+  </ng-template>
+
+  <app-article-comments *ngIf="article?.url" [articleUrl]="article.url"/>
 </main>

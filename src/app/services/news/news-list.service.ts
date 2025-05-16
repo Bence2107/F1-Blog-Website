@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {map, Observable} from 'rxjs';
 import {collection, collectionData, Firestore, getDocs, query, where} from '@angular/fire/firestore';
 import {NewsListModel} from '../../models/news_list_model';
-import {ArticleModel} from '../../models/article_model';
 
 @Injectable({
   providedIn: 'root'

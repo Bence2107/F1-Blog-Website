@@ -1,14 +1,17 @@
 import {Component} from '@angular/core';
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {RouterLink} from '@angular/router';
 import {NewsListModel} from '../../../../models/news_list_model';
 import {ReviewsListService} from '../../../../services/news/reviews-list.service';
+import {MatProgressBar} from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-reviews-list',
   imports: [
     NgForOf,
-    RouterLink
+    RouterLink,
+    NgIf,
+    MatProgressBar
   ],
   templateUrl: './reviews-list.component.html',
   styleUrl: './reviews-list.component.scss'

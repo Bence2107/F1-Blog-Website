@@ -24,7 +24,7 @@ export class ArticleCommentsComponent implements OnInit {
   @Input() articleUrl!: string;
   userData: any;
   comments: any[] = [];
-  isLoggedIn = new BehaviorSubject<boolean>(true);
+  isLoggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private auth: AuthService, private usersService: UserService, private commentService: CommentService, private cdr: ChangeDetectorRef) {}
 

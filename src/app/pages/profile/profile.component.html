@@ -1,24 +1,33 @@
 <main>
-  <div class="profile_container">
-    <h1>Adatok</h1>
-    <div class="profile-info">
-      <img [src]="avatarUrl | async" alt="">
-      <div class="profile-data">
-        <div class="info">
-          <h2>Felhasználónév:</h2>
-          <h4>{{userData?.username | capitalizeFirst}}</h4>
+  <div *ngIf="userData?.id;  else loadingTemplate">
+    <div class="profile_container">
+      <h1>Adatok</h1>
+      <div class="profile-info">
+        <img [src]="avatarUrl | async" alt="">
+        <div class="profile-data">
+          <div class="info">
+            <h2>Felhasználónév:</h2>
+            <h4>{{userData?.username | capitalizeFirst}}</h4>
+          </div>
+          <div class="info">
+            <h2>Email:</h2>
+            <h4>{{userData?.email}}</h4>
+          </div>
+          <div class="profile-buttons">
+            <button mat-flat-button (click)="logout()">Kijelentkezés</button>
+          </div>
         </div>
-        <div class="info">
-          <h2>Email:</h2>
-          <h4>{{userData?.email}}</h4>
-        </div>
-        <div class="profile-buttons">
-          <button mat-flat-button (click)="logout()">Kijelentkezés</button>
-        </div>
+
       </div>
 
     </div>
-
+    <app-users-comments [loggedId] ="userData?.id"/>
   </div>
-  <app-users-comments [loggedId] ="userData?.id"/>
+
+  <ng-template #loadingTemplate>
+    <div class="loading-container">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <h3>Betöltés...</h3>
+    </div>
+  </ng-template>
 </main>

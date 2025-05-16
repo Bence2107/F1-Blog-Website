@@ -1,14 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForOf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import {NewsListModel} from '../../../../models/news_list_model';
 import {RouterLink} from '@angular/router';
 import {NewsListService} from '../../../../services/news/news-list.service';
+import {MatProgressBar} from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-primary-news-list',
   imports: [
     NgForOf,
     RouterLink,
+    NgIf,
+    MatProgressBar,
   ],
   templateUrl: './primary-news-list.component.html',
   styleUrl: './primary-news-list.component.scss'

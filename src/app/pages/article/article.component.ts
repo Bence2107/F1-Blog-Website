@@ -7,6 +7,7 @@ import {MatButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {ArticleCommentsComponent} from './components/article-comments/article-comments.component';
 import {ArticleService} from '../../services/article/article.service';
+import {MatProgressBar} from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-article',
@@ -16,6 +17,7 @@ import {ArticleService} from '../../services/article/article.service';
     MatButton,
     MatIcon,
     ArticleCommentsComponent,
+    MatProgressBar,
   ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss'

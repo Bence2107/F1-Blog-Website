@@ -1,4 +1,4 @@
-<div class="news-container">
+<div *ngIf="news_list.length > 0; else loadingTemplate" class="news-container">
   <div class="new-item" *ngFor="let new_item of news_list" [routerLink]="['/article', new_item.url]">
     <img [src]="'assets/img/news-images/' + new_item.id + '/primary.jpg'" [alt]="new_item.label ">
     <div class="text-content">
@@ -7,3 +7,10 @@
     </div>
   </div>
 </div>
+
+<ng-template #loadingTemplate>
+  <div class="loading-container">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <h3>Betöltés...</h3>
+  </div>
+</ng-template>
