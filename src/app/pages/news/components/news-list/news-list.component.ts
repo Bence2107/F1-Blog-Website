@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {news_list} from '../../../../constants/news';
 import {RouterLink} from '@angular/router';
 import {NgForOf} from '@angular/common';
 import {NewsListModel} from '../../../../models/news_list_model';

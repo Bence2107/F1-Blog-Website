@@ -1,5 +1,5 @@
 <div class="primary_news-container">
-  <div class="new-item" *ngFor="let new_item of primary_news_list_" [routerLink]="['/article', new_item.url]">
+  <div class="new-item" *ngFor="let new_item of primary_news_list" [routerLink]="['/article', new_item.url]">
     <img [src]="'assets/img/news-images/' + new_item.id + '/primary.jpg'" [alt]="new_item.label ">
       <div class="text-content">
         <h2 class="news-label">{{new_item.label}}</h2>
