@@ -5,9 +5,9 @@
 
     <div class="new-comment-item" *ngIf="isLoggedIn | async">
       <img [src]="loadAvatar()" alt="Profile" class="profile-img">
-      <form class="new-comment-form">
+      <form class="new-comment-form" [formGroup]="newCommentForm" (ngSubmit)="submitComment()">
       <mat-form-field style="width:60vw" color="primary">
-        <input matInput placeholder="Írjon egy kommentet..."/>
+        <input formControlName="comment_input" matInput placeholder="Írjon egy kommentet..."/>
       </mat-form-field>
         <button mat-flat-button color="primary" type="submit">Komment</button>
       </form>
@@ -20,7 +20,7 @@
       <div class="user-info">
         <img [src]="comment_item.profileImage" class="profile-img" alt="{{ comment_item.username }}"/>
         <h2>{{comment_item.username}}</h2>
-        <button *ngIf="userData?.username == comment_item.username" class="delete-button" mat-flat-button >Törlés</button>
+        <button *ngIf="userData?.username == comment_item.username" class="delete-button" mat-flat-button (click)="deleteComment(comment_item)">Törlés</button>
       </div>
       <div class="content">
         <p>{{comment_item.content}}</p>
@@ -29,14 +29,15 @@
     </div>
   </div>
   <div class="comments" *ngIf="!loadComments()">
-      <div class="new-comment-item" *ngIf="isLoggedIn">
+      <div class="new-comment-item" *ngIf="isLoggedIn | async">
         <img [src]="loadAvatar()" alt="Profile" class="profile-img">
-        <form class="new-comment-form">
+        <form class="new-comment-form" [formGroup]="newCommentForm" (ngSubmit)="submitComment()">
           <mat-form-field style="width:60vw" color="primary">
-            <input matInput placeholder="Írjon egy kommentet..."/>
+            <input formControlName="comment_input" matInput placeholder="Írjon egy kommentet..."/>
           </mat-form-field>
           <button mat-flat-button color="primary" type="submit">Komment</button>
         </form>
+
       </div>
       <div class="new-comment-item-none" *ngIf="!isLoggedIn">
         <p>Hozzászóláshoz jelentkezz be!</p>

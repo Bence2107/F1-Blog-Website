@@ -6,6 +6,10 @@ import {AuthService} from '../../../../services/auth/auth.service';
 import {UserService} from '../../../../services/user/user.service';
 import {BehaviorSubject} from 'rxjs';
 import {CommentService} from '../../../../services/comments/comment.service';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CommentModel} from '../../../../models/comment_model';
+import {CustomsnackbarComponent} from '../../../../components/customsnackbar/customsnackbar.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-article-comments',
@@ -15,7 +19,9 @@ import {CommentService} from '../../../../services/comments/comment.service';
     MatButton,
     MatFormField,
     MatInput,
-    AsyncPipe
+    AsyncPipe,
+    ReactiveFormsModule,
+    FormsModule
   ],
   templateUrl: './article-comments.component.html',
   styleUrl: './article-comments.component.scss'
@@ -25,15 +31,18 @@ export class ArticleCommentsComponent implements OnInit {
   userData: any;
   comments: any[] = [];
   isLoggedIn = new BehaviorSubject<boolean>(false);
+  newCommentForm: FormGroup;
 
-  constructor(private auth: AuthService, private usersService: UserService, private commentService: CommentService, private cdr: ChangeDetectorRef) {}
+  constructor(private fb: FormBuilder, private auth: AuthService, private usersService: UserService, private commentService: CommentService, private cdr: ChangeDetectorRef, private snackBar: MatSnackBar) {
+    this.newCommentForm = this.fb.group({
+      comment_input: ['']
+    });
+  }
 
   ngOnInit() {
     this.commentService.getComments().subscribe(comments => {
       this.comments = comments;
       this.refreshComments();
-      this.cdr.detectChanges();
-
       this.auth.isLoggedIn().subscribe(user => {
         this.isLoggedIn.next(!!user);
         if (user) {
@@ -41,7 +50,6 @@ export class ArticleCommentsComponent implements OnInit {
         } else {
           this.resetUserData();
         }
-
       });
     });
   }
@@ -78,6 +86,44 @@ export class ArticleCommentsComponent implements OnInit {
         }
       )
     );
+  }
+
+  async submitComment(){
+    const comment = this.newCommentForm.get('comment_input')?.value
+    if(!comment){
+      this.snackBar.openFromComponent(CustomsnackbarComponent, {
+        data: { message: 'Töltsd ki a kommentmezőt!', actionLabel: 'Rendben' },
+        duration: 3000,
+        horizontalPosition: 'center',
+      });
+      return;
+    }
+
+
+    const newComment = {
+      articleUrl: this.articleUrl,
+      content: comment,
+      userId: this.userData?.id || '',
+      username: this.userData?.username || 'Ismeretlen Felhasználó',
+      timestamp: new Date().toISOString(),
+    };
+
+    try {
+      await this.commentService.addComment(newComment);
+      this.newCommentForm.reset();
+      await this.refreshComments();
+    } catch (error) {
+      console.error('Failed to submit comment:', error);
+    }
+  }
+
+  async deleteComment(comment: CommentModel) {
+    try {
+      await this.commentService.deleteComment(comment);
+      await this.refreshComments();
+    } catch (error) {
+      console.error('Failed to submit comment:', error);
+    }
   }
 
   loadAvatar(): string {
