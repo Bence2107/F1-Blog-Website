@@ -8,6 +8,8 @@ import {UserService} from '../../../../services/user/user.service';
 import {BehaviorSubject} from 'rxjs';
 import {CommentModel} from '../../../../models/comment_model';
 import {DateFormatPipe} from '../../../../pipes/date-format.pipe';
+import {CommentEditDialogComponent} from '../../../../components/comment-edit-dialog/comment-edit-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-users-comments',
@@ -27,7 +29,7 @@ export class UsersCommentsComponent implements OnInit {
   comments : any[] = []
   isLoggedIn = new BehaviorSubject<boolean>(false);
 
-  constructor(private auth: AuthService, private usersService: UserService,private commentService: CommentService, private cdr: ChangeDetectorRef) {}
+  constructor(private auth: AuthService, private usersService: UserService, private commentService: CommentService, private cdr: ChangeDetectorRef, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.loggedId = localStorage.getItem('userId');
@@ -89,6 +91,20 @@ export class UsersCommentsComponent implements OnInit {
     } catch (error) {
       console.error('Failed to submit comment:', error);
     }
+  }
+
+  async openUpdateCommentDialog(comment: CommentModel): Promise<void> {
+    const dialogRef = this.dialog.open(CommentEditDialogComponent, {
+      width: '800px',
+      data: { comment: comment.content }
+    });
+
+    dialogRef.afterClosed().subscribe(updatedComment => {
+      if (updatedComment !== undefined) {
+        comment.content = updatedComment;
+        this.commentService.updateComment(comment.id, updatedComment);
+      }
+    });
   }
 
   loadAvatar(): string {

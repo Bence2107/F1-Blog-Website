@@ -55,6 +55,12 @@ export class CommentService {
     }
   }
 
+  async updateComment(commentId: string, newContent: string): Promise<void> {
+    const commentRef = doc(this.commentsCollection, commentId);
+    await updateDoc(commentRef, { content: newContent });
+  }
+
+
   async deleteComment(comment: CommentModel): Promise<void> {
     if (!comment.id) {
       return;

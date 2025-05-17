@@ -5,8 +5,9 @@
       <div class="user-info">
         <img [src]="loadAvatar()"  class="profile-img" alt="{{ comment_item.username }}"/>
         <h2>{{comment_item.username}}</h2>
-        <button class="delete-button" mat-flat-button [routerLink]="['/article', comment_item.articleUrl]">Ugrás</button>
-        <button class="delete-button" mat-flat-button (click)="deleteComment(comment_item)">Törlés</button>
+        <button class="comment-button" mat-flat-button [routerLink]="['/article', comment_item.articleUrl]">Ugrás</button>
+        <button class="comment-button" mat-flat-button (click)="openUpdateCommentDialog(comment_item)">Szerkesztés</button>
+        <button class="comment-button" mat-flat-button (click)="deleteComment(comment_item)">Törlés</button>
       </div>
       <div class="content">
         <p>{{comment_item.content}}</p>
