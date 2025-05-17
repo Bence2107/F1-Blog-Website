@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {MatButton} from '@angular/material/button';
 import {MatFormField, MatInput} from '@angular/material/input';
@@ -33,7 +33,7 @@ export class ArticleCommentsComponent implements OnInit {
   isLoggedIn = new BehaviorSubject<boolean>(false);
   newCommentForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private usersService: UserService, private commentService: CommentService, private cdr: ChangeDetectorRef, private snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private auth: AuthService, private usersService: UserService, private commentService: CommentService, private snackBar: MatSnackBar) {
     this.newCommentForm = this.fb.group({
       comment_input: ['']
     });

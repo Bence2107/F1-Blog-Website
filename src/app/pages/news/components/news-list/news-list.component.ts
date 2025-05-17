@@ -22,7 +22,7 @@ export class NewsListComponent implements OnInit {
   constructor(private news_listService: NewsListService) {}
 
   ngOnInit() {
-    this.news_listService.getNewsLists().subscribe(
+    this.news_listService.getNewsLists().then(
       news_list => {
         this.news_list = news_list;
       }

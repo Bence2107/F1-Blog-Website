@@ -3,5 +3,6 @@ export interface NewsListModel {
   url: string;
   label: string;
   summary: string;
+  date: string;
   isPrimary: boolean
 }

@@ -16,6 +16,8 @@
         <p [innerHTML]="article.last_section"></p>
       </div>
 
+      <button mat-flat-button class="review-button" routerLink="/news">Híreink</button>
+
     </div>
     <div *ngIf="article.isReview">
       <mat-icon routerLink="/news" class="back-button" fontIcon="arrow_back"></mat-icon>
