@@ -64,20 +64,13 @@ export class UsersCommentsComponent implements OnInit {
   }
 
   async refreshComments(): Promise<void> {
-    if(!this.comments) return;
+    if (!this.loggedId) return;
 
-    this.comments = await Promise.all(
-      this.comments
-        .filter(c => c.userId === this.loggedId)
-        .map(async c =>{
-            const user = await this.usersService.getUserById(c.userId);
-            return {
-              ...c,
-              profileImage: user?.avatarUrl ? `assets/img/profile_pictures/${user.id}.jpg` : 'assets/img/profile_pictures/avatar.jpg'
-            }
-          }
-        )
-    );
+    try {
+      this.comments = await this.commentService.getUsersComments(this.loggedId);
+    } catch (error) {
+      console.error('Error fetching comments:', error);
+    }
   }
 
   async deleteComment(comment: CommentModel) {

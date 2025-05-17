@@ -3,7 +3,6 @@ import {RouterLink} from '@angular/router';
 import {NgForOf, NgIf} from '@angular/common';
 import {NewsListModel} from '../../../../models/news_list_model';
 import {NewsListService} from '../../../../services/news/news-list.service';
-import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import {MatProgressBar} from '@angular/material/progress-bar';
 
 @Component({

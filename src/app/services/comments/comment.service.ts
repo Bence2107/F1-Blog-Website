@@ -1,5 +1,15 @@
 import { Injectable } from '@angular/core';
-import {Firestore, collection, collectionData, addDoc, updateDoc, deleteDoc, doc} from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  collectionData,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  query,
+  where, getDocs, orderBy
+} from '@angular/fire/firestore';
 import {map, Observable} from 'rxjs';
 import {CommentModel} from '../../models/comment_model';
 
@@ -7,7 +17,7 @@ import {CommentModel} from '../../models/comment_model';
   providedIn: 'root'
 })
 export class CommentService {
-  private commentsCollection;
+  private readonly commentsCollection;
 
   constructor(private firestore: Firestore) {
     this.commentsCollection = collection(this.firestore, 'Comments');
@@ -17,6 +27,21 @@ export class CommentService {
     return collectionData(this.commentsCollection, { idField: 'id' }).pipe(
       map(comments => comments as CommentModel  & {profileImage: any }[])
     );
+  }
+
+  async getUsersComments(userId: string): Promise<CommentModel[]> {
+    const q = query(this.commentsCollection,
+      orderBy('timestamp', 'desc'),
+      where('userId', '==', userId)
+    );
+    const querySnapshot = await getDocs(q);
+
+    const comments: CommentModel[] = [];
+    querySnapshot.forEach(doc => {
+      comments.push(doc.data() as CommentModel);
+    });
+
+    return comments;
   }
 
   async addComment(comment: any): Promise<void> {

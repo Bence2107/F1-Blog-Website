@@ -3,7 +3,7 @@
   <div class="comments" *ngIf="loadComments()">
     <div class="comment-item" *ngFor="let comment_item of comments" >
       <div class="user-info">
-        <img [src]="comment_item.profileImage" class="profile-img" alt="{{ comment_item.userName }}"/>
+        <img [src]="loadAvatar()" class="profile-img" alt="{{ comment_item.username }}"/>
         <h2>{{comment_item.username}}</h2>
         <button class="delete-button" mat-flat-button [routerLink]="['/article', comment_item.articleUrl]">Ugrás</button>
         <button class="delete-button" mat-flat-button (click)="deleteComment(comment_item)">Törlés</button>
