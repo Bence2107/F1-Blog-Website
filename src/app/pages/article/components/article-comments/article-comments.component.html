@@ -25,7 +25,7 @@
       <div class="content">
         <p>{{comment_item.content}}</p>
       </div>
-      <p>{{ comment_item.timestamp }}</p>
+      <p>{{ comment_item.timestamp | dateFormat }}</p>
     </div>
   </div>
   <div class="comments" *ngIf="!loadComments()">

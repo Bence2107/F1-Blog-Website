@@ -19,6 +19,8 @@ export const publicGuard: CanActivateFn = () => {
 
   return authService.currentUser.pipe(
     take(1),
-    map(user => !user ? true : (router.navigate(['/home']), false))
+    map(user => {
+      return !user ? true : (router.navigate(['/home']), false);
+    })
   );
 };

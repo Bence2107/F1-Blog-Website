@@ -7,6 +7,7 @@ import {CommentService} from '../../../../services/comments/comment.service';
 import {UserService} from '../../../../services/user/user.service';
 import {BehaviorSubject} from 'rxjs';
 import {CommentModel} from '../../../../models/comment_model';
+import {DateFormatPipe} from '../../../../pipes/date-format.pipe';
 
 @Component({
   selector: 'app-users-comments',
@@ -14,7 +15,8 @@ import {CommentModel} from '../../../../models/comment_model';
     NgForOf,
     NgIf,
     MatButton,
-    RouterLink
+    RouterLink,
+    DateFormatPipe
   ],
   templateUrl: './users-comments.component.html',
   styleUrl: './users-comments.component.scss'
@@ -68,6 +70,13 @@ export class UsersCommentsComponent implements OnInit {
 
     try {
       this.comments = await this.commentService.getUsersComments(this.loggedId);
+
+      this.comments = this.comments.map(comment => ({
+        ...comment,
+        profileImage: comment.profileImage
+          ? comment.profileImage
+          : 'assets/img/profile_pictures/avatar.jpg'
+      }));
     } catch (error) {
       console.error('Error fetching comments:', error);
     }
@@ -83,7 +92,7 @@ export class UsersCommentsComponent implements OnInit {
   }
 
   loadAvatar(): string {
-    if(this.userData) {
+    if(this.userData && this.userData.avatarUrl) {
       return `assets/img/profile_pictures/${this.loggedId}.jpg`;
     }
     else{

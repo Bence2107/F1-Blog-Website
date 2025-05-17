@@ -10,6 +10,7 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular
 import {CommentModel} from '../../../../models/comment_model';
 import {CustomsnackbarComponent} from '../../../../components/customsnackbar/customsnackbar.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {DateFormatPipe} from '../../../../pipes/date-format.pipe';
 
 @Component({
   selector: 'app-article-comments',
@@ -21,7 +22,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
     MatInput,
     AsyncPipe,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    DateFormatPipe
   ],
   templateUrl: './article-comments.component.html',
   styleUrl: './article-comments.component.scss'

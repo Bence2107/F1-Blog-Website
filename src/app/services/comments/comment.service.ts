@@ -23,9 +23,11 @@ export class CommentService {
     this.commentsCollection = collection(this.firestore, 'Comments');
   }
 
-  getComments(): Observable<CommentModel & {profileImage: any }[]> {
-    return collectionData(this.commentsCollection, { idField: 'id' }).pipe(
-      map(comments => comments as CommentModel  & {profileImage: any }[])
+  getComments(): Observable<(CommentModel & { profileImage: any })[]> {
+    const q = query(this.commentsCollection, orderBy('timestamp', 'desc'));
+
+    return collectionData(q, { idField: 'id' }).pipe(
+      map(comments => comments as (CommentModel & { profileImage: any })[])
     );
   }
 

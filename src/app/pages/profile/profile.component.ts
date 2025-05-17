@@ -9,7 +9,6 @@ import {UserService} from '../../services/user/user.service';
 import {UserModel} from '../../models/user_model';
 import {BehaviorSubject} from 'rxjs';
 import {AsyncPipe, NgIf} from '@angular/common';
-import {AppComponent} from '../../app.component';
 import {MatProgressBar} from '@angular/material/progress-bar';
 
 @Component({
@@ -32,7 +31,7 @@ export class ProfileComponent implements OnInit {
   loggedId: any;
   avatarUrl = new BehaviorSubject(<string>"");
 
-  constructor(private app: AppComponent, private auth: AuthService, private userService: UserService,private cdr: ChangeDetectorRef, private snackBar: MatSnackBar) {}
+  constructor(private auth: AuthService, private userService: UserService,private cdr: ChangeDetectorRef, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     const userId = localStorage.getItem('userId');
