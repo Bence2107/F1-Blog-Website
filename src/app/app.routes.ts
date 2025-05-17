@@ -7,6 +7,7 @@ import {ProfileComponent} from './pages/profile/profile.component';
 import {ArticleComponent} from './pages/article/article.component';
 import {ReviewsComponent} from './pages/reviews/reviews.component';
 import {NotfoundComponent} from './pages/notfound/notfound.component';
+import {authGuard, publicGuard} from './guards/auth.guard.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,11 +18,11 @@ export const routes: Routes = [
 
   { path: "reviews", component: ReviewsComponent },
 
-  { path: "login", component: LoginComponent },
+  { path: "login", component: LoginComponent, canActivate: [publicGuard] },
 
-  { path: "signup", component: SignupComponent },
+  { path: "signup", component: SignupComponent, canActivate: [publicGuard] },
 
-  { path: "profile/:id", component: ProfileComponent },
+  { path: "profile/:id", component: ProfileComponent, canActivate: [authGuard] },
 
   { path: "article/:url", component: ArticleComponent },
 
