@@ -5,15 +5,15 @@
       <h2>{{loginError | async}}</h2>
     </div>
     <div class="auth-login">
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
         <h2>Bejelentkezés</h2>
 
-        <mat-form-field>
+        <mat-form-field color="primary">
           <mat-label>Email</mat-label>
           <input matInput type="email" [formControl]="email" />
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field color="primary">
           <mat-label>Jelszó</mat-label>
           <input matInput type="password" [formControl]="password" />
         </mat-form-field>

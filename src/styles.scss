@@ -32,7 +32,44 @@
     filled-container-color: var(--secondary-background),
     filled-label-text-color: var(--gray-text),
     filled-focus-label-text-color: var(--red-text),
-    filled-hover-label-text-color: var(--gray-text),
+    filled-hover-label-text-color: var(--red-text),
+    filled-error-label-text-color: var(--gray-text),
+    filled-error-hover-label-text-color: var(--red-text),
+    filled-error-focus-label-text-color: var(--gray-text),
+
+    filled-input-text-color: var(--gray-text),
+    filled-disabled-input-text-color: var(--red-text),
+    filled-input-text-placeholder-color: var(--gray-text),
+
+    filled-caret-color: var(--red-text),
+    filled-active-indicator-color: var(--gray-text),
+    filled-focus-active-indicator-color: var(--red-text),
+    filled-hover-active-indicator-color: var(--gray-text),
+    filled-error-active-indicator-color: var(--gray-text),
+    filled-error-hover-active-indicator-color: var(--gray-text),
+    filled-error-focus-active-indicator-color: var(--red-text),
+
+    outlined-label-text-color: var(--gray-text),
+    outlined-focus-label-text-color: var(--red-text),
+    outlined-hover-label-text-color: var(--gray-text),
+    outlined-error-label-text-color: var(--gray-text),
+    outlined-error-hover-label-text-color: var(--gray-text),
+    outlined-error-focus-label-text-color: var(--red-text),
+
+    outlined-input-text-color: var(--gray-text),
+    outlined-disabled-input-text-color: var(--red-text),
+    outlined-input-text-placeholder-color: var(--gray-text),
+
+    outlined-caret-color: var(--red-text),
+    outlined-outline-color: var(--gray-text),
+    outlined-hover-outline-color: var(--gray-text),
+    outlined-focus-outline-color: var(--red-text),
+    outlined-error-outline-color: var(--red-text),
+    outlined-error-hover-outline-color: var(--gray-text),
+    outlined-error-focus-outline-color: var(--red-text),
+
+    disabled-input-text-placeholder-color: var(--gray-text)
+
   ));
 
   @include mat.snack-bar-overrides((
@@ -44,6 +81,12 @@
   @include mat.tooltip-overrides((
     container-color: var(--secondary-background),
     supporting-text-color: var(--primary-text),
+  ));
+
+  @include mat.dialog-overrides((
+    container-color: var(--secondary-background),
+    subhead-color: var(--primary-text),
+    supporting-text-color: #cccccc
   ));
 }
 
