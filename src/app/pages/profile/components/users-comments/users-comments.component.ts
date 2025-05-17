@@ -6,6 +6,7 @@ import {AuthService} from '../../../../services/auth/auth.service';
 import {CommentService} from '../../../../services/comments/comment.service';
 import {UserService} from '../../../../services/user/user.service';
 import {BehaviorSubject} from 'rxjs';
+import {CommentModel} from '../../../../models/comment_model';
 
 @Component({
   selector: 'app-users-comments',
@@ -77,7 +78,15 @@ export class UsersCommentsComponent implements OnInit {
           }
         )
     );
+  }
 
+  async deleteComment(comment: CommentModel) {
+    try {
+      await this.commentService.deleteComment(comment);
+      await this.refreshComments();
+    } catch (error) {
+      console.error('Failed to submit comment:', error);
+    }
   }
 
   loadAvatar(): string {
