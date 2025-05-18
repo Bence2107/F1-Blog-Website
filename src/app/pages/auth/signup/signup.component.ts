@@ -50,7 +50,7 @@ export class SignupComponent implements OnInit {
       const confirmPassword = this.registerForm.get('confirmPassword')?.value;
 
       if(password !== confirmPassword) {
-        this.signupError.next("A jelszók nem egyeznek!");
+        this.signupError.next("A jelszók nem egyeznek meg!");
         return;
       }
 
@@ -86,7 +86,7 @@ export class SignupComponent implements OnInit {
               this.signupError.next('Helytelen email. Kérem próbálkozzon másikkal!');
               break;
             case 'auth/weak-password':
-              this.signupError.next('A jelszó túl rövid, legalább 6 karakter!')
+              this.signupError.next('A jelszó túl rövid, legyen legalább 6 karakter!')
               break;
             default:
               this.signupError.next("Hiba történt! Kérem próbákozzon később!");

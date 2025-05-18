@@ -11,6 +11,7 @@
 @mixin form_main{
   background-color: var(--primary-background);
   padding-block: 125px;
+  min-height: 90vh;
 }
 
 @mixin form_container{
