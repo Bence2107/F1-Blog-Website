@@ -14,15 +14,6 @@
 
 }
 
-.new-comment-item{
-  @include comment_styles.comment-item;
-}
-
-.new-comment-item-none{
-  @include comment_styles.comment-item-none;
-}
-
-
 .comment-item {
   @include comment_styles.comment-item;
 
@@ -38,9 +29,22 @@
 
 }
 
+.avatar-name{
+  @include comment_styles.avatar-name;
+}
+
+
 .user-info button {
   @include comment_styles.user-info-button;
 
+}
+
+.comment-buttons {
+  @include comment_styles.comment-buttons
+}
+
+.comment-button {
+  @include comment_styles.comment-button;
 }
 
 .content {
@@ -61,6 +65,14 @@
 .profile-img {
   @include comment_styles.profile-img;
 
+}
+
+.new-comment-item{
+  @include comment_styles.new-comment-item;
+}
+
+.new-comment-item-none{
+  @include comment_styles.new-comment-item;
 }
 
 .comment-date {

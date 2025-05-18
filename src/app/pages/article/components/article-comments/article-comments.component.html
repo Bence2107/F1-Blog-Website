@@ -18,9 +18,13 @@
 
     <div class="comment-item" *ngFor="let comment_item of comments">
       <div class="user-info">
-        <img [src]="comment_item.profileImage" class="profile-img" alt="{{ comment_item.username }}"/>
-        <h2>{{comment_item.username}}</h2>
-        <button *ngIf="userData?.username == comment_item.username" class="delete-button" mat-flat-button (click)="deleteComment(comment_item)">Törlés</button>
+        <div class="avatar-name">
+          <img [src]="comment_item.profileImage" class="profile-img" alt="{{ comment_item.username }}"/>
+          <h2>{{comment_item.username}}</h2>
+        </div>
+        <div class="comment-buttons">
+          <button class="comment-button" *ngIf="userData?.username == comment_item.username" mat-flat-button (click)="deleteComment(comment_item)">Törlés</button>
+        </div>
       </div>
       <div class="content">
         <p>{{comment_item.content}}</p>
