@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PrimaryNewsListComponent} from './components/primary-news-list/primary-news-list.component';
 import {MatButton} from '@angular/material/button';
-import {Router, RouterLink} from '@angular/router';
+import {Router} from '@angular/router';
 import {MatTooltip} from '@angular/material/tooltip';
 import {AuthService} from '../../services/auth/auth.service';
 import {CustomsnackbarComponent} from '../../components/customsnackbar/customsnackbar.component';
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  routeToRegister() {
+  async routeToRegister() {
     if(this.isLoggedIn){
       this.snackBar.openFromComponent(CustomsnackbarComponent, {
         data: { message: 'Már regisztrált!', actionLabel: 'Rendben' },
@@ -43,7 +43,8 @@ export class HomeComponent implements OnInit {
       });
     }
     else{
-      this.router.navigate(['/signup'])
+      await this.router.navigate(['/signup'])
+      window.location.reload();
     }
   }
 }

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {AuthService} from '../auth/auth.service';
 import {ArticleModel} from '../../models/article_model';
 import {collection,query, Firestore, getDocs, where} from '@angular/fire/firestore';
 
@@ -7,8 +6,7 @@ import {collection,query, Firestore, getDocs, where} from '@angular/fire/firesto
   providedIn: 'root'
 })
 export class ArticleService {
-  private articleCollection;
-
+  private readonly articleCollection;
 
   constructor(private fireStore: Firestore) {
     this.articleCollection = collection(this.fireStore, 'Articles')
@@ -23,5 +21,4 @@ export class ArticleService {
     }
     return undefined;
   }
-
 }

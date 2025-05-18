@@ -92,7 +92,7 @@ export class UsersCommentsComponent implements OnInit {
           : 'assets/img/profile_pictures/avatar.jpg'
       }));
     } catch (error) {
-      console.error('Error fetching comments:', error);
+      console.error('Hiba kommentek betöltésekor:', error);
     }
   }
 
@@ -124,7 +124,7 @@ export class UsersCommentsComponent implements OnInit {
         }
       });
     } catch (error) {
-      console.error('Failed to delete comment:', error);
+      console.error('Hiba történt a komment törlésekor:', error);
     }
   }
 }

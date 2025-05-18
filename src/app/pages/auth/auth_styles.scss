@@ -20,6 +20,11 @@
   padding: 70px;
   margin: 0 auto;
   border-radius: 20px;
+
+  @media (max-width: 768px) {
+    max-width: 99%;
+    padding: 40px;
+  }
 }
 
 @mixin auth-form {
@@ -40,7 +45,7 @@
 
   p{
     font-size: 18px;
-    display: flex;
+    text-align: center;
     margin: auto;
     padding-top: 30px;
     color: var(--primary-text);
@@ -66,7 +71,7 @@
 
 @mixin back-button{
   display: flex;
-  font-size: 30px;
+  font-size: 28px;
   cursor: pointer;
 }
 

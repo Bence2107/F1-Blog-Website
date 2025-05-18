@@ -1,20 +1,14 @@
 import {Injectable} from '@angular/core';
 import {UserModel} from '../../models/user_model';
 import {AuthService} from '../auth/auth.service';
-import {collection, collectionData, Firestore} from '@angular/fire/firestore';
-import {map, Observable} from 'rxjs';
-import {CommentModel} from '../../models/comment_model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private cashedUser: UserModel | null = null;
-  private usersCollection;
 
-  constructor(private auth: AuthService,  private firestore: Firestore) {
-    this.usersCollection = collection(this.firestore, 'Users');
-
+  constructor(private auth: AuthService) {
   }
 
   async getUserById(userId: string): Promise<UserModel | null> {
@@ -23,7 +17,7 @@ export class UserService {
     }
     const userData = await this.auth.getUserById(userId);
     if (!userData) {
-      throw new Error("User not found");
+      throw new Error("A felhasználó nem található");
     }
 
     this.cashedUser = {
@@ -34,11 +28,5 @@ export class UserService {
     } as UserModel
 
     return this.cashedUser;
-  }
-
-  getAllUsers(): Observable<UserModel[]> {
-    return collectionData(this.usersCollection, { idField: 'id' }).pipe(
-      map(users => users as UserModel[])
-    );
   }
 }

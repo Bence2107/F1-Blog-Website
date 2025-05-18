@@ -27,7 +27,7 @@ export class AuthService {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
 
-  signOut() : Promise <void> {
+  async signOut() : Promise <void> {
     return signOut(this.auth).then(() => {
       localStorage.setItem('isLoggedIn', 'false');
       localStorage.removeItem('userId');
@@ -76,7 +76,7 @@ export class AuthService {
     if (snapshot.exists()) {
       return {id: snapshot.id, ...snapshot.data()};
     } else {
-      throw new Error('User not found');
+      throw new Error('A felhasználó nem található');
     }
   }
 

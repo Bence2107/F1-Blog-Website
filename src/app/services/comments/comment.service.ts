@@ -8,7 +8,9 @@ import {
   deleteDoc,
   doc,
   query,
-  where, getDocs, orderBy
+  where,
+  getDocs,
+  orderBy
 } from '@angular/fire/firestore';
 import {map, Observable} from 'rxjs';
 import {CommentModel} from '../../models/comment_model';
@@ -51,7 +53,7 @@ export class CommentService {
       const docRef = await addDoc(this.commentsCollection, {...comment});
       await updateDoc(docRef, { id: docRef.id });
     } catch (error) {
-      console.error('Error adding comment:', error);
+      console.error('Hiba a komment létrehozásakor:', error);
     }
   }
 
@@ -70,7 +72,7 @@ export class CommentService {
       const commentRef = doc(this.commentsCollection, comment.id);
       await deleteDoc(commentRef);
     } catch (error) {
-      console.error('Error deleting comment:', error);
+      console.error('Hiba történt a komment törlésekor:', error);
     }
   }
 }

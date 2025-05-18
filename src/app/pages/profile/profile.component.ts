@@ -59,9 +59,8 @@ export class ProfileComponent implements OnInit {
   }
 
 
-
-  logout() {
-    this.auth.signOut();
+  async logout() {
+    await this.auth.signOut();
     this.auth.updateLogInStatus(false);
     this.snackBar.openFromComponent(CustomsnackbarComponent, {
       data: { message: 'Kijelentkezve', actionLabel: 'Rendben' },

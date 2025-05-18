@@ -13,7 +13,7 @@
       </form>
     </div>
     <div class="new-comment-item-none" *ngIf="!(isLoggedIn | async)">
-        <p>Hozzászóláshoz jelentkezz be!</p>
+        <p>Hozzászóláshoz <a (click)="navigateToLogin()">jelentkezz be</a>!</p>
     </div>
 
     <div class="comment-item" *ngFor="let comment_item of comments">

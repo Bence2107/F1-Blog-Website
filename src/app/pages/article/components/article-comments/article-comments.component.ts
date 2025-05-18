@@ -28,7 +28,7 @@ import {
     AsyncPipe,
     ReactiveFormsModule,
     FormsModule,
-    DateFormatPipe
+    DateFormatPipe,
   ],
   templateUrl: './article-comments.component.html',
   styleUrl: './article-comments.component.scss'
@@ -46,7 +46,7 @@ export class ArticleCommentsComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.commentService.getComments().subscribe(comments => {
       this.comments = comments;
       this.refreshComments();
@@ -120,7 +120,7 @@ export class ArticleCommentsComponent implements OnInit {
       this.newCommentForm.reset();
       await this.refreshComments();
     } catch (error) {
-      console.error('Failed to submit comment:', error);
+      console.error('Hiba a komment létrehozásakor', error);
     }
   }
   loadAvatar(): string {
@@ -160,7 +160,12 @@ export class ArticleCommentsComponent implements OnInit {
         }
       });
     } catch (error) {
-      console.error('Failed to delete comment:', error);
+      console.error('Hiba történt a komment törlésekor:', error);
     }
   }
+
+  navigateToLogin() {
+    window.location.href = '/login';
+  }
+
 }

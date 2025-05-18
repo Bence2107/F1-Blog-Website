@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatButton} from '@angular/material/button';
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   loginError = new BehaviorSubject<string>("");
   userData: any;
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private snackBar: MatSnackBar, private cdRef: ChangeDetectorRef) {
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private snackBar: MatSnackBar) {
     this.loginForm = this.fb.group({
     });
   }

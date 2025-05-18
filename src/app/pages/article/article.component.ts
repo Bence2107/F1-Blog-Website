@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {NewsListModel} from '../../models/news_list_model';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {NgIf} from '@angular/common';
-import {news_article_list, review_article_list} from '../../constants/articles';
 import {MatButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {ArticleCommentsComponent} from './components/article-comments/article-comments.component';
@@ -27,7 +26,7 @@ export class ArticleComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private article_service: ArticleService, private router: Router) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.route.paramMap.subscribe(() => {
       this.loadArticle();
     });
@@ -39,7 +38,7 @@ export class ArticleComponent implements OnInit {
     }
 
     if (!this.article) {
-      this.router.navigate(['/news']);
+      await this.router.navigate(['/news']);
     }
   }
 }

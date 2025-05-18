@@ -185,7 +185,7 @@ body {
 
 }
 
-@mixin  not-comment-item {
+@mixin not-comment-item {
   margin-left: 10px;
 }
 
@@ -308,6 +308,18 @@ body {
   background-color: var(--primary-background);
   gap: 16px;
   border-radius: 30px;
+
+  a{
+    cursor: pointer;
+    margin-left: 3px;
+    text-decoration: none;
+    color: #ed2d4d;
+  }
+  a:hover{
+    color: #c62140;
+
+  }
+
 
   form{
     display: flex;
