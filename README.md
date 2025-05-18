@@ -1,10 +1,15 @@
 # Forma-1 blogger oldal (DRS Zóna)
 
-## Üdvözöllek a Bahreini hétvége után! Részletezem a projektem akutális állását, hogy segítsem értékelőm becses munkáját!
+## Üdvözöllek az Imolai hétvége után! Részletezem a projektem beadásra szánt állását, hogy segítsem értékelőm becses munkáját!
 
 ---
 
 ## Installáció:
+
+### 0. A weboldal hostolt linkje:
+
+>https://angular-project-396d7.web.app/home
+
 
 ### 1. (Bármilyen IDE-ben)
 ```bash
@@ -12,11 +17,11 @@ git clone https://github.com/Bence2107/F1-Blog-Website
  ```
 #### vagy GitHubon Code -> Download ZIP
 
-### 2. (Függőségek telepítése - valamilyen IDE-n belűl)
+### 2. (Függőségek telepítése - valamilyen IDE-n vagy konzolban)
 ```bash
 npm install
 ```
-### 3. (Szerver indítása)
+### 3. (Lokális(!) Szerver indítása)
 ```bash
 ng serve
 ```
@@ -25,36 +30,51 @@ ng serve
 
 ---
 
-## Pontozási segítség
+## Pontozási segítség (példák amelyek megtalálhatóak a projektben)
+> Fontos! Nem minden pontozási szempontot írtam le!
 
 ### Adatmodell definiálása:
 
 - **Interfészek**: models/article_model.ts, models/comment_model.ts, news_list_model.ts, user_model.ts
-- **Kollekciók**: constants/articles.ts, constants/comments_list.ts, constants/news.ts, constants/users.ts
+- **Kollekciók (már nem releváns)**: constants/articles.ts, constants/comments_list.ts, constants/news.ts, constants/users.ts
 
- - ### Felhasználási példák (Komponensenként .ts fájlban):
+ - ### Felhasználási példák (Komponensenként .ts fájlban) (nem releváns):
 
    - **articles.ts**:  pages/article komponens 
    - **comments_list.ts**: pages/article/article.comments komponens 
    - **news.ts**:  pages/article/components/article-comments komponens 
    - **users.ts**:  pages/article/article.comments komponens
 
-### Attribútum direktívák:
 
-   - **FormGroup**: pages/auth/login komponens
-   - **RouteLink**: components/header komponens
+### Példák attribútum direktívákra:
 
-### Beépített vezérlési folyamatok:
+   - **FormGroup**: 
+     - pages/auth/login komponens: loginForm
+     - pages/auth/signup komponnens: registerForm
+   - **RouteLink**: 
+     - components/header komponens
+     - pages/notfound komponens
 
-   - **NgIf**: pages/components/header komponens
-   - **NgFor**: pages/article/components/article-comments komponens
 
-### Adatátadás szülő és gyermek komponensek között: 
+### Példák beépített vezérlési folyamatokra:
 
-  - **@Input**: pages/home/components/primary-news-list komponens
-  - **@Output**: pages/components/header komponens
+   - **NgIf**: 
+     - pages/components/header komponens
+     - pages/news/news-list komponens
+   - **NgFor**: 
+     - pages/article/components/article-comments komponens
+     - pages/home/primary-news-list komponens
 
-### Material elemek:
+
+### Pldák Adatátadás szülő és gyermek komponensek közöttre: 
+
+  - **@Input**: 
+    - pages/profile/users-comments komponens
+    - pages/article/article-comments komponens
+  - **@Output**: 
+    - pages/components/header komponens
+
+### Példák Material elemekre:
 
   - mat-sidenav-container
   
@@ -74,19 +94,46 @@ ng serve
 
   - matSnackBar
 
-### Angular Formok: 
+  - mat-dialog
 
- - **pages/auth/login komponens**
- - **pages/auth/register komponens**
+### Példák Pipe osztályra:
 
-### Pipe osztály:
+- **capitalizeFirst (CapitalizeFirstPipe Osztály)**:  
+  - Használata: pages/profile komponens
+- **dateFormat (DateFormatPipe Osztály)**: 
+  - Használata: pages/article/article-comments komponens
 
-- **capitalizeFirst (CapitalizeFirstPipe Osztály)**:  Használata: pages/profile komponens
   
----
+### Példák Angular Formok-ra: 
 
-## Elérhetőség:
+ - **pages/auth/login komponens: loginForm**
+ - **pages/auth/register komponens: registerForm**
+ - **pages/article/article-comments komponens: newCommentForm**
+ - **pages/comment-edit-dialog komponens: commentEditForm**
 
-### Ha bármi kérdés van a projekttel kapcsolatban, Discordon bence2107 (régi név: Bence2107#3870) néven találtok meg!
+### Példák Lifecycle Hook használatára:
+ 
+ - ngOnInit()
+
+### Példák route-okra:
+
+  - app.routes-ban, összesen 8
+
+### Példák komplex Firestore lekérdezésekre (metódusokban):
+
+  - services/comment/comment.service:
+    - getComments() 
+    - getUsersComments()
+  - services/news/news-list.service:
+    - getNewsLists()
+    - getPrimaryNews()
+
+### Példa AuthGuard implementációra:
+  - guards/auth-guard
+
+### Példa route levédésére azonosítással (AuthGuard):
+  - login
+  - signup
+  - profile/:id
 
 ---

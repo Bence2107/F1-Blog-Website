@@ -27,21 +27,21 @@ import {MatButton} from '@angular/material/button';
   styleUrls: ['./comment-edit-dialog.component.scss']
 })
 export class CommentEditDialogComponent {
-  editForm: FormGroup;
+  commentEditForm: FormGroup;
 
   constructor(
     public dialogRef: MatDialogRef<CommentEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { comment: string },
     private fb: FormBuilder
   ) {
-    this.editForm = this.fb.group({
+    this.commentEditForm = this.fb.group({
       comment: [data.comment]
     });
   }
 
   save(): void {
-    if (this.editForm.valid) {
-      this.dialogRef.close(this.editForm.value.comment);
+    if (this.commentEditForm.valid) {
+      this.dialogRef.close(this.commentEditForm.value.comment);
     }
   }
 
