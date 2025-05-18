@@ -23,7 +23,8 @@
           <h2>{{comment_item.username}}</h2>
         </div>
         <div class="comment-buttons">
-          <button class="comment-button" *ngIf="userData?.username == comment_item.username" mat-flat-button (click)="deleteComment(comment_item)">Törlés</button>
+          <button class="comment-button" *ngIf="userData?.username == comment_item.username" mat-flat-button (click)="openUpdateCommentDialog(comment_item)">Szerkesztés</button>
+          <button class="comment-button" *ngIf="userData?.username == comment_item.username" mat-flat-button (click)="openDeleteCommentDialog(comment_item)">Törlés</button>
         </div>
       </div>
       <div class="content">

@@ -11,6 +11,11 @@ import {CommentModel} from '../../../../models/comment_model';
 import {CustomsnackbarComponent} from '../../../../components/customsnackbar/customsnackbar.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {DateFormatPipe} from '../../../../pipes/date-format.pipe';
+import {CommentEditDialogComponent} from '../../../../components/comment/comment-edit-dialog/comment-edit-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {
+  CommentDeleteDialogComponent
+} from '../../../../components/comment/comment-delete-dialog/comment-delete-dialog.component';
 
 @Component({
   selector: 'app-article-comments',
@@ -35,7 +40,7 @@ export class ArticleCommentsComponent implements OnInit {
   isLoggedIn = new BehaviorSubject<boolean>(false);
   newCommentForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private usersService: UserService, private commentService: CommentService, private snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private auth: AuthService, private usersService: UserService, private commentService: CommentService, private snackBar: MatSnackBar, private dialog: MatDialog) {
     this.newCommentForm = this.fb.group({
       comment_input: ['']
     });
@@ -118,22 +123,44 @@ export class ArticleCommentsComponent implements OnInit {
       console.error('Failed to submit comment:', error);
     }
   }
-
-  async deleteComment(comment: CommentModel) {
-    try {
-      await this.commentService.deleteComment(comment);
-      await this.refreshComments();
-    } catch (error) {
-      console.error('Failed to submit comment:', error);
-    }
-  }
-
   loadAvatar(): string {
     if(this.userData && this.userData.avatarUrl) {
       return `assets/img/profile_pictures/${this.userData.id}.jpg`;
     }
     else{
       return `assets/img/profile_pictures/avatar.jpg`;
+    }
+  }
+
+  async openUpdateCommentDialog(comment: CommentModel): Promise<void> {
+    const dialogRef = this.dialog.open(CommentEditDialogComponent, {
+      width: '800px',
+      data: { comment: comment.content }
+    });
+
+    dialogRef.afterClosed().subscribe(updatedComment => {
+      if (updatedComment !== undefined) {
+        comment.content = updatedComment;
+        this.commentService.updateComment(comment.id, updatedComment);
+      }
+    });
+  }
+
+  async openDeleteCommentDialog(comment: CommentModel): Promise<void> {
+    try {
+      const dialogRef = this.dialog.open(CommentDeleteDialogComponent, {
+        width: '400px',
+        data: { commentId: comment.id }
+      });
+
+      dialogRef.afterClosed().subscribe(async (result) => {
+        if (result) {
+          await this.commentService.deleteComment(comment);
+          await this.refreshComments();
+        }
+      });
+    } catch (error) {
+      console.error('Failed to delete comment:', error);
     }
   }
 }

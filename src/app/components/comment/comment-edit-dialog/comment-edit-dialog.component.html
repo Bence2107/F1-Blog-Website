@@ -7,7 +7,7 @@
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <button mat-button (click)="close()">Mégse</button>
-    <button mat-button (click)="save()" [disabled]="!editForm.valid">Mentés</button>
+    <button mat-flat-button color="color" (click)="close()">Mégse</button>
+    <button mat-flat-button color="warn" (click)="save()" [disabled]="!editForm.valid">Mentés</button>
   </mat-dialog-actions>
 </form>

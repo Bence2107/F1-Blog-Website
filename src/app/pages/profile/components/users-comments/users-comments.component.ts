@@ -8,8 +8,11 @@ import {UserService} from '../../../../services/user/user.service';
 import {BehaviorSubject} from 'rxjs';
 import {CommentModel} from '../../../../models/comment_model';
 import {DateFormatPipe} from '../../../../pipes/date-format.pipe';
-import {CommentEditDialogComponent} from '../../../../components/comment-edit-dialog/comment-edit-dialog.component';
+import {CommentEditDialogComponent} from '../../../../components/comment/comment-edit-dialog/comment-edit-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import {
+  CommentDeleteDialogComponent
+} from '../../../../components/comment/comment-delete-dialog/comment-delete-dialog.component';
 
 @Component({
   selector: 'app-users-comments',
@@ -63,12 +66,21 @@ export class UsersCommentsComponent implements OnInit {
     this.userData = null;
   }
 
+  loadAvatar(): string {
+    if(this.userData && this.userData.avatarUrl) {
+      return `assets/img/profile_pictures/${this.loggedId}.jpg`;
+    }
+    else{
+      return `assets/img/profile_pictures/avatar.jpg`;
+    }
+  }
+
   loadComments() : boolean{
     return this.comments.length !== 0;
   }
 
   async refreshComments(): Promise<void> {
-    if (!this.loggedId) return;
+    if (!this.comments) return;
 
     try {
       this.comments = await this.commentService.getUsersComments(this.loggedId);
@@ -81,15 +93,6 @@ export class UsersCommentsComponent implements OnInit {
       }));
     } catch (error) {
       console.error('Error fetching comments:', error);
-    }
-  }
-
-  async deleteComment(comment: CommentModel) {
-    try {
-      await this.commentService.deleteComment(comment);
-      await this.refreshComments();
-    } catch (error) {
-      console.error('Failed to submit comment:', error);
     }
   }
 
@@ -107,12 +110,21 @@ export class UsersCommentsComponent implements OnInit {
     });
   }
 
-  loadAvatar(): string {
-    if(this.userData && this.userData.avatarUrl) {
-      return `assets/img/profile_pictures/${this.loggedId}.jpg`;
-    }
-    else{
-      return `assets/img/profile_pictures/avatar.jpg`;
+  async openDeleteCommentDialog(comment: CommentModel): Promise<void> {
+    try {
+      const dialogRef = this.dialog.open(CommentDeleteDialogComponent, {
+        width: '400px',
+        data: { commentId: comment.id }
+      });
+
+      dialogRef.afterClosed().subscribe(async (result) => {
+        if (result) {
+          await this.commentService.deleteComment(comment);
+          await this.refreshComments();
+        }
+      });
+    } catch (error) {
+      console.error('Failed to delete comment:', error);
     }
   }
 }
