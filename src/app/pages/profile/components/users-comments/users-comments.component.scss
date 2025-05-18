@@ -24,8 +24,20 @@
   @include comment_styles.user-info;
 }
 
+.avatar-name{
+  @include comment_styles.avatar-name;
+}
+
 .user-info button {
   @include comment_styles.user-info-button;
+}
+
+.comment-buttons {
+  @include comment_styles.comment-buttons
+}
+
+.comment-button {
+  @include comment_styles.comment-button;
 }
 
 .content {

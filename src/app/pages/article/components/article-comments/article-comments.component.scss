@@ -15,11 +15,11 @@
 }
 
 .new-comment-item{
-  @include comment_styles.new-comment-item;
+  @include comment_styles.comment-item;
 }
 
 .new-comment-item-none{
-  @include comment_styles.new-comment-item-none;
+  @include comment_styles.comment-item-none;
 }
 
 

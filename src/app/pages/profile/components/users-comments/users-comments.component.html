@@ -3,11 +3,15 @@
   <div class="comments" *ngIf="loadComments()">
     <div class="comment-item" *ngFor="let comment_item of comments" >
       <div class="user-info">
-        <img [src]="loadAvatar()"  class="profile-img" alt="{{ comment_item.username }}"/>
-        <h2>{{comment_item.username}}</h2>
-        <button class="comment-button" mat-flat-button [routerLink]="['/article', comment_item.articleUrl]">Ugrás</button>
-        <button class="comment-button" mat-flat-button (click)="openUpdateCommentDialog(comment_item)">Szerkesztés</button>
-        <button class="comment-button" mat-flat-button (click)="deleteComment(comment_item)">Törlés</button>
+        <div class="avatar-name">
+          <img [src]="loadAvatar()"  class="profile-img" alt="{{ comment_item.username }}"/>
+          <h2>{{comment_item.username}}</h2>
+        </div>
+        <div class="comment-buttons">
+          <button class="comment-button" mat-flat-button [routerLink]="['/article', comment_item.articleUrl]">Ugrás</button>
+          <button class="comment-button" mat-flat-button (click)="openUpdateCommentDialog(comment_item)">Szerkesztés</button>
+          <button class="comment-button" mat-flat-button (click)="deleteComment(comment_item)">Törlés</button>
+        </div>
       </div>
       <div class="content">
         <p>{{comment_item.content}}</p>

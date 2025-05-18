@@ -169,7 +169,7 @@ body {
 
 }
 
-@mixin new-comment-item {
+@mixin comment-item {
   display: flex;
   width: 100%;
   justify-content: center ;
@@ -182,9 +182,6 @@ body {
     display: flex;
     gap: 16px;
 
-    @media (max-width: 990px) {
-      flex-direction: column;
-    }
   }
 
   form button{
@@ -202,7 +199,7 @@ body {
   }
 }
 
-@mixin new-comment-item-none {
+@mixin comment-item-none {
   display: flex;
   width: 100%;
   justify-content: center ;
@@ -245,6 +242,8 @@ body {
 
   @media (max-width: 990px) {
     width: 90%;
+    align-items: center;
+    justify-content: center;
   }
 
 }
@@ -256,15 +255,44 @@ body {
 @mixin user-info{
   display: flex;
   flex-direction: row;
+  width: 95%;
 
   @media (max-width: 990px) {
     justify-content: center;
+    flex-direction: column;
   }
+}
+
+@mixin avatar-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @mixin user-info-button {
   margin-top: 15px;
   margin-left: 10px;
+}
+
+@mixin comment-buttons {
+  display: flex;
+  width: 100%;
+
+  @media (max-width: 990px) {
+    margin: auto;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@mixin comment-button {
+  max-width: 70%;
+  margin: 5px;
+
+  @media (max-width: 990px) {
+    font-size: 12px;
+  }
 }
 
 @mixin content {
